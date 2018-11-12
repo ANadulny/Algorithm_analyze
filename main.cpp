@@ -1,6 +1,7 @@
 #include <iostream>
 #include <chrono>
 #include <random>
+#include <chrono>
 #include "Sticks.h"
 
 using namespace std;
@@ -11,8 +12,15 @@ int AlgorithmNaive(int table[], int lengt);
 
 int main()
 {
-    int stickNumber;
     UI();
+    return 0;
+}
+
+void UI()
+{
+    cout << "Please enter the number of sticks:" << endl;
+
+    int stickNumber;
     cin >> stickNumber;
 
     // testing
@@ -22,30 +30,21 @@ int main()
     sticks.generateStickTable();
 
     int stickTable[sticks.getStickNumber()];
+
     //testing
     for ( int i = 0; i < sticks.getStickNumber(); i++ ) {
-        cout << i << ": " << *(sticks.getStickTable()+i) << endl;
+        cout << i << ":" << *(sticks.getStickTable()+i) <<"; ";
         stickTable[i] = *(sticks.getStickTable()+i);
     }
-
-    //Testing
-    //int table [10] = {6,3,2,1,6,3,3,9,8,3};
-    //int table [7] = {6,3,6,3,3,7,3};
-    //int table [7] = {7,3,3,6,3,3,6};
-    //int table [7] = {5,2,1,5,1,5,2};
-    //for ( int i = 0; i < 7; i++ ) {
-    //    cout << i << ": " << table[i] << endl;
-    //}
-    //cout << AlgorithmNaive(table, 7 ) << ": Squares number" << endl;
+    cout << endl;
 
     cout << "===========================================" << endl;
+    std::chrono::time_point<std::chrono::system_clock> start = std::chrono::system_clock::now();
     cout << AlgorithmNaive(stickTable, sticks.getStickNumber() ) << ": Squares number" << endl;
-    return 0;
-}
-
-void UI()
-{
-    cout << "Please enter the number of sticks:" << endl;
+    std::chrono::time_point<std::chrono::system_clock> end = std::chrono::system_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end - start;
+    cout << "===========================================" << endl;
+    cout << "Algorithm time: " << elapsed_seconds.count() << endl;
 }
 
 int AlgorithmNaive(int table[], int length)
@@ -97,18 +96,6 @@ int AlgorithmNaive(int table[], int length)
                                 else if(tab[i] == max_elem)
                                     counting++;
                             }
-
-                            //Testing
-                            //    for(int i = 0; i < 6; i++)
-                            //                cout << tab[i] << " ";
-                            //            cout << endl;
-
-                            // Testing
-                            //cout << "MAx elem: "<<max_elem<<"   Counting: " << counting << "   Sum: " << sum << endl;
-
-                            // i don't care
-                            //if(counting > 3 || counting < 2)
-                            //    continue;
 
                             if (counting == 3 && sum == (max_elem * 4)) // the largest 3 sticks have the same number
                             {
