@@ -37,34 +37,44 @@ Projekt będzie budowany przy pomocy programu make. Podczas kompilowania program
 ### W pliku Algorithm.cpp:
 
 - int AlgorithmNaive(int table[], int length)		[n^7]
+
 Metoda odpowiedzialna za poprawne działanie algorytmu naiwnego na podstawie powyższej koncepcji.
 
 - int AlgorithmMyHeuristic (int table[], int length)		[n^3 + n^2 + n + n*logn]
+
 Metoda odpowiedzialna za poprawne działanie algorytmu heurystyki, którą opisałem we wcześniejszym punkcie dokumentacji. Dana metoda będzie wywoływała na początku swojego działania jedną z metod sortowania tablicy. Przetestuję za pomocą testów jednostkowych, który algorytm sortowania szybciej będzie działał dla wejściowych tablic o dużej liczbie powtarzalnych elementów i wybiorę najszybciej działający algorytm,  żeby czas wykonywania metody AlgorithmMyHeuristic był jak najkrótszy.  Skorzystam tutaj z następujących metod do przetestowania:
 
 - void quicksort(int tablica[], int p, int r)	[ n * log2 n]
+
 Dla algorytmu sortowania quicksort. 
 http://www.algorytm.org/algorytmy-sortowania/sortowanie-szybkie-quicksort/quick-1-c.html
 
 - void merge(int tab[], int start, int srodek, int end)
 - void merge_sort(int tab[], int start, int end)  		[n * log2 n]
+
 Dla algorytmu mergesort.
 http://www.algorytm.org/algorytmy-sortowania/sortowanie-przez-scalanie-mergesort/merge-1-c.html
 
 - void bubblesort(int *tab, int rozmiar)		[n^2]
+
 Dla algorytmu sortowania bąbelkowego.
 http://www.algorytm.org/algorytmy-sortowania/sortowanie-babelkowe-bubblesort/bubble-1-c.html
 
 - int searchingTwoSidesOfSquare (int tab[], int length, int position, int searchingSum)	[n+1]
+
 Metoda odpowiedzialna za zliczanie par liczb sumujących się do wartości searchingSum. Sprawdzanie sum kolejnych par liczb zaczynamy równolegle z pozycji position + 1 i length – 1, gdzie position + 1 będziemy przy odpowiednim warunku zwiększali o 1, a length – 1 zmniejszali o 1, oczywiście dalej sumując liczby aż do momentu, gdy te dwie liczby dotyczące pozycji elementów w tablicy będą sobie równe. Metoda zwraca liczbę par spełniających wyżej wymienione założenie.
 
 - int searchingThreeSticks (int tab[], int length, int position)	[n^2]
+
 Metoda będzie odpowiedzialna za zliczanie kombinacji przy użyciu takich 3 liczb z tablicy, których suma równa będzie tab[position]. Parametr position określa pozycję ostatniego powtarzającego się elementu w tablicy. Kolejne liczby z tablicy znajdujące się na pozycjach większych od position będą wybierane i dla nich będzie obliczana różnica:            tab[position] - tab[position+i] , gdzie i = 1 oraz i < length-2; Dopiero teraz będzie można posłużyć się metodą searchingTwoSidesOfSquare dla której nowy parametr position będzie równy position+i, a searchingSum równa będzie obliczonej trochę wyżej różnicy.
 
 - void algorithmTimeMeasure (int& algorithm(int table[], int length))     
+
 Metoda wyliczająca czas trwania algorytmu.
 
 ### W pliku Sticks.h:
+
 - void generateStickTable()
+
 Metoda generująca liczby od 1 do S (S oznaczone w klasie będzie jako int stickNumber) i wstawiająca je do kolejnych miejsc w tablicy.
 
