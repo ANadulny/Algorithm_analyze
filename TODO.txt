@@ -1,0 +1,234 @@
+==13661== 
+==13661== HEAP SUMMARY:
+==13661==     in use at exit: 72,728 bytes in 2 blocks
+==13661==   total heap usage: 4 allocs, 2 frees, 74,776 bytes allocated
+==13661== 
+==13661== 24 bytes in 1 blocks are definitely lost in loss record 1 of 2
+==13661==    at 0x4C2E80F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==13661==    by 0x400E34: Sticks::Sticks(int) (Sticks.h:20)
+==13661==    by 0x401124: UI() (main.cpp:63)
+==13661==    by 0x400F1F: main (main.cpp:15)
+==13661== 
+==13661== 72,704 bytes in 1 blocks are still reachable in loss record 2 of 2
+==13661==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==13661==    by 0x4EC3EFF: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==13661==    by 0x40106B9: call_init.part.0 (dl-init.c:72)
+==13661==    by 0x40107CA: call_init (dl-init.c:30)
+==13661==    by 0x40107CA: _dl_init (dl-init.c:120)
+==13661==    by 0x4000C69: ??? (in /lib/x86_64-linux-gnu/ld-2.23.so)
+==13661== 
+==13661== LEAK SUMMARY:
+==13661==    definitely lost: 24 bytes in 1 blocks
+==13661==    indirectly lost: 0 bytes in 0 blocks
+==13661==      possibly lost: 0 bytes in 0 blocks
+==13661==    still reachable: 72,704 bytes in 1 blocks
+==13661==         suppressed: 0 bytes in 0 blocks
+==13661== 
+==13661== For counts of detected and suppressed errors, rerun with: -v
+==13661== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+
+
+valgrind --leak-check=full --show-leak-kinds=all  ./aal
+
+
+
+Koniecznie poprawić wycieki pamięci
+
+
+#define BOOST_TEST_MODULE AAL
+#include <boost/test/unit_test.hpp>
+#include "Sticks.h"
+
+namespace{
+	
+	//TODO
+	//generate Sticks object with some tables elements
+	// wstawienie klasy i 
+}
+
+BOOST_AUTO_TEST_SUITE(Naive_Algorithm_Test)
+BOOST_AUTO_TEST_CASE(test1)
+{
+    BOOST_CHECK_EQUAL(0, 0);
+}
+
+BOOST_AUTO_TEST_CASE(test2)
+{
+    BOOST_CHECK_EQUAL(1, 0);
+}
+/*
+Test case:
+1)stickNumber przy konstruktorze Sticks  
+2)generateStaticNumber() 
+- czy elem <= S
+- czy l.elem == S
+3)setStickTable
+4)searchigMaxNumber
+5)searchingThreeSticks
+6)searchingTwoSidesOfSquare
+7)setStickNumber
+
+testowanie algorytmów my heurestic i naive
+najpierw dla małych danych sprawdzenie czy algosy działają 
+następnie sprawdzenie czy dla tych samych danych algosy zwracają ten sam numer kwadratów
+
+*/
+
+BOOST_AUTO_TEST_SUITE_END()
+
+
+
+
+
+
+
+
+//=======================================================
+//Sticks.h
+
+
+//in class
+void setStickTable(int *tab) // można uznać że stickNumber nie zmieniamy, ale trzeba walidację wprowadzić
+//sprawdzając czy wielkość tablicy jest taka sama jak stickNumber
+{
+	int counter = 0;
+	this.stickTable = tab;
+	for (int count: tab)
+		counter++;
+	this.stickNumber = counter;
+} //delete ?
+
+void setStickNumber(int length)
+{
+		this.stickNumber = length;
+		//tablica ma być zwolniona i wyczyszczona
+		//ewentualnie na nowo wygenerowana
+}
+
+
+
+
+//===================================================
+//Algorithm.cpp
+/*
+for NaiveAlgorithm
+add method:
+searchigMaxNumber
+wariationFirst 
+wariationSecond
+
+for AlgorithmMyHeuristic:
+add method:
+sortType
+-quicksort
+-mergesort
+-bubblesort
+searchingThreeSticks
+searchingTwoSidesOfSquare  
+
+
+algorithmTimeMeasure
+ 
+*/
+
+
+//main.cpp
+//UI:
+ cout << "Please enter the number of sticks:" << endl;
+
+    int stickNumber;
+    cin >> stickNumber;
+
+	//początkowe wypełnienie tablicy S elementowej
+    Sticks sticks(stickNumber);
+    sticks.generateStickTable();
+	
+	screen();
+	
+	
+
+
+
+//[1]
+cout<<"Write new sticks number S:"<<endl;
+cin>>newSticksNumber;
+setStickNumber(newSticksNumber);
+// powrót do panelu głównego menu
+
+//[2]
+generatStickTable()
+//write cout komunikat o powodzeniu i powrót do menu gł
+
+//[3]
+cout<<"Write "<<getStickNumber<<" new elements for sticks table."<<endl;
+for (int i = 0; i < getStickNumber; i++)
+{
+	do
+	{
+	cin>>elem;
+	if elem isNotNumber 
+		cout << "Write number!"<<endl;
+	else if elem > getStickNumber
+		cout << "Write number lower than sticks number S!"<<endl;
+	else
+		//wstawienie do tmpTable
+	} while elem isNotNumber or elem > getStickNumber
+}
+//przypisanie setStickTable tablicy tmpTable
+//return to main panel
+
+// [4]
+cout<<"Choose type of algorithm:"<<endl;
+// [1] AlgorithmMyHeuristic
+// [2] NaiveAlgorithm
+// execute alg. and write 
+// nowy switch i do przemyślenia forma zapisywania danych 
+
+
+void generatStickTable() 
+{
+	//TODO
+}
+
+
+//--------------------------------------------------------
+//			Dodatkowe uwagi
+// jak zapisywanie elementów zrobić 
+//zamiast wypisywać na ekranie to zapisujesz do pliku w takim formacie
+//jednkaże podczas testowania będzie problem 
+
+
+
+
+/*
+TASK LIST
+1 - UI przygotować bez wstawiania jeszcze metod w switch-u
+2 - zrobienie nowej klasy cpp
+3 - dodac do pliku .h nowe metody
+4 - wprowadzic testy do klasy 
+5 - modyfikacja algosa naiwnego z zapisywaniem do pliku danych zamiast wypisywac je na ekranie
+6 - zabrac sie za algorytm swojej heurystyki
+7 - zastanowic sie nad testowaniem danych 
+	mozna bedzie zrobic funkcje generujaca scenariusz testowy a mianowice pomiar czasow dla roznych 
+	wielkosci wprowadzanych danych
+8 - dane czasowe algorytmow w postaci csv zapisywac może
+	aby mozna było je szybko do exela wstawic i rysunek graficzny zrobic
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
