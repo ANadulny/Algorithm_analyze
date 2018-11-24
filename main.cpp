@@ -16,28 +16,100 @@ int main()
     return 0;
 }
 
+int newStickNumber()
+{
+    int stickNumber;
+    do {
+
+        cin >> stickNumber;
+        if(cin.fail() )
+        {
+            cin.clear();
+            cin.ignore(150, '\n');
+        }
+    } while ( stickNumber < 6 );
+    return stickNumber;
+}
+
+void screen (Sticks sticks)
+{
+    cout<<"Current S value: "<<sticks.getStickNumber()<<endl;
+	cout<<"Write correct number:"<<endl;
+	cout<<"[1] Change sticks number S:"<<endl;
+	cout<<"[2] Generate random value for sticks table." <<endl;
+	cout<<"[3] Generate own stick table." <<endl;
+	cout<<"[4] Measure time of algorithms." <<endl;
+	cout<<"[5] End program" <<endl;
+}
+
+void screen1(Sticks sticks)
+{
+    cout<<"Write new sticks number S:"<<endl;
+    int newSticksNumber = newStickNumber();
+    sticks.setStickNumber(newSticksNumber);
+}
+
+
 void UI()
 {
     cout << "Please enter the number of sticks:" << endl;
 
-    int stickNumber;
-    cin >> stickNumber;
+    int stickNumber = newStickNumber();
 
     // testing
-    cout << "Sticks number: " << stickNumber << endl;
+    //cout << "Sticks number: " << stickNumber << endl;
 
+    //Poczatek wypelniania tablicy S elementowej
     Sticks sticks(stickNumber);
     sticks.generateStickTable();
 
-    int stickTable[sticks.getStickNumber()];
+    int decision;
+
+    while(1)
+    {
+        system("clear");
+        screen( sticks );
+        cin >> decision;
+
+        if(cin.fail() )
+        {
+            cin.clear();
+            cin.ignore(150, '\n');
+            continue;
+        }
+
+        if(decision < 1 || decision > 5)
+            continue;
+
+        switch(decision)
+        {
+            case 1:
+                screen1( sticks );
+                break;
+            case 2:
+                //TODO
+                break;
+            case 3:
+                //TODO
+                break;
+            case 4:
+                //TODO
+                break;
+            default:
+                return;
+        }
+
+    }
+
+    //int stickTable[sticks.getStickNumber()];
 
     //testing
-    for ( int i = 0; i < sticks.getStickNumber(); i++ ) {
-        cout << i << ":" << *(sticks.getStickTable()+i) <<"; ";
-        stickTable[i] = *(sticks.getStickTable()+i);
-    }
-    cout << endl;
-
+    //for ( int i = 0; i < sticks.getStickNumber(); i++ ) {
+    //    cout << i << ":" << *(sticks.getStickTable()+i) <<"; ";
+    //    stickTable[i] = *(sticks.getStickTable()+i);
+    //}
+    //cout << endl;
+    /*
     cout << "===========================================" << endl;
     std::chrono::time_point<std::chrono::system_clock> start = std::chrono::system_clock::now();
     cout << AlgorithmNaive(stickTable, sticks.getStickNumber() ) << ": Squares number" << endl;
@@ -45,6 +117,7 @@ void UI()
     std::chrono::duration<double> elapsed_seconds = end - start;
     cout << "===========================================" << endl;
     cout << "Algorithm time: " << elapsed_seconds.count() << endl;
+    */
 }
 
 int AlgorithmNaive(int table[], int length)
