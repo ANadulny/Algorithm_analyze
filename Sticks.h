@@ -2,7 +2,7 @@
 #define STICKS_H_INCLUDED
 class Sticks {
 
-        int stickNumber;
+        unsigned int stickNumber;
         int *stickTable;
 
     public:
@@ -31,7 +31,8 @@ int* Sticks::getStickTable() {
 void Sticks::setStickNumber(int number)
 {
     this->stickNumber = number;
-    delete this->stickTable;
+    delete []stickTable;
+    stickTable = new int[number];
     generateStickTable();
 }
 
@@ -45,7 +46,7 @@ void Sticks::generateStickTable ()
 
 
 Sticks::~Sticks(){
-    //cout << "Destructor was call!" << endl;
+    delete []stickTable;
 }
 
 

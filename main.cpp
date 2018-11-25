@@ -4,6 +4,8 @@
 #include <chrono>
 #include "Sticks.h"
 
+#define SLEEP_TIME 500
+
 using namespace std;
 
 void UI();
@@ -31,7 +33,7 @@ int newStickNumber()
     return stickNumber;
 }
 
-void screen (Sticks sticks)
+void screen (Sticks &sticks)
 {
     cout<<"Current S value: "<<sticks.getStickNumber()<<endl;
 	cout<<"Write correct number:"<<endl;
@@ -39,16 +41,67 @@ void screen (Sticks sticks)
 	cout<<"[2] Generate random value for sticks table." <<endl;
 	cout<<"[3] Generate own stick table." <<endl;
 	cout<<"[4] Measure time of algorithms." <<endl;
-	cout<<"[5] End program" <<endl;
+	cout<<"[5] Show elements from stick table." <<endl;
+	cout<<"[6] End program" <<endl;
 }
 
-void screen1(Sticks sticks)
+void screen1(Sticks &sticks)
 {
+    system("clear");
     cout<<"Write new sticks number S:"<<endl;
     int newSticksNumber = newStickNumber();
     sticks.setStickNumber(newSticksNumber);
 }
 
+void generateStickTableElements(Sticks &sticks)
+{
+    sticks.generateStickTable();
+}
+
+void showStickTableElements(Sticks &sticks)
+{
+    system("clear");
+    for( int i = 0; i < sticks.getStickNumber(); i++)
+    {
+        cout << i << ":" << *(sticks.getStickTable()+i) <<"; ";
+    }
+
+    string goBack;
+    cout << "\nPress key to go back to main panel."<<endl;
+    cin >> goBack;
+}
+
+void generateOwnStickTableElements(Sticks &sticks)
+{
+    int newElem;
+    for (int i = 0; i < sticks.getStickNumber(); i++)
+    {
+        system("clear");
+        cout << "Write: " << sticks.getStickNumber() - i << " new elements." << endl;
+        cout << "Element can not be more than " << sticks.getStickNumber() << endl;
+        do {
+            cin >> newElem;
+            if(cin.fail() )
+            {
+                cin.clear();
+                cin.ignore(150, '\n');
+            }
+        } while ( newElem < 1 || newElem > sticks.getStickNumber() );
+        *(sticks.getStickTable()+i) = newElem;
+    }
+}
+
+void screen2(Sticks &sticks)
+{
+    // albo od razu mierzone są dane dla jednego i drugiego algosa
+    system("clear");
+    cout<<"Choose type of algorithm:"<<endl;
+    cout<<"[1] AlgorithmMyHeuristic"<<endl;
+	cout<<"[2] NaiveAlgorithm" <<endl;
+
+    string a;
+    cin >> a;
+}
 
 void UI()
 {
@@ -78,7 +131,7 @@ void UI()
             continue;
         }
 
-        if(decision < 1 || decision > 5)
+        if(decision < 1 || decision > 6)
             continue;
 
         switch(decision)
@@ -87,13 +140,16 @@ void UI()
                 screen1( sticks );
                 break;
             case 2:
-                //TODO
+                generateStickTableElements(sticks);
                 break;
             case 3:
-                //TODO
+                generateOwnStickTableElements(sticks);
                 break;
             case 4:
-                //TODO
+                screen2(sticks);
+                break;
+            case 5:
+                showStickTableElements(sticks);
                 break;
             default:
                 return;
