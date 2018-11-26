@@ -1,10 +1,6 @@
 valgrind --leak-check=full --show-leak-kinds=all  ./aal
 
 
-
-Koniecznie poprawić wycieki pamięci
-
-
 #define BOOST_TEST_MODULE AAL
 #include <boost/test/unit_test.hpp>
 #include "Sticks.h"
@@ -58,25 +54,7 @@ searchigMaxNumber
 wariationFirst 
 wariationSecond
 
-for AlgorithmMyHeuristic:
-add method:
-sortType
--quicksort
--mergesort
--bubblesort
-searchingThreeSticks
-searchingTwoSidesOfSquare  
-
-
-
 algorithmTimeMeasure
-
-
-
-void generatStickTable() 
-{
-	//TODO
-}
 
 
 //--------------------------------------------------------
@@ -90,9 +68,6 @@ void generatStickTable()
 
 /*
 TASK LIST
-1 - UI przygotować bez wstawiania jeszcze metod w switch-u
-2 - zrobienie nowej klasy cpp
-3 - dodac do pliku .h nowe metody
 4 - wprowadzic testy do klasy 
 5 - modyfikacja algosa naiwnego z zapisywaniem do pliku danych zamiast wypisywac je na ekranie
 6 - zabrac sie za algorytm swojej heurystyki
