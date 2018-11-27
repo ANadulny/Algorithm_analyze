@@ -4,10 +4,10 @@
 
 class Algorithm {
 
-        //Sticks sticks
+        //Sticks sticks;
 
     public:
-        //Algorithm(int l, int tab[]);
+        //Algorithm(Sticks sticks);
 
         int AlgorithmNaive(int table[], int length);
         int AlgorithmMyHeuristic(int table[], int length);
@@ -16,10 +16,9 @@ class Algorithm {
 
 };
 
-//Algorithm::Algorithm(int l, int tab[] )
+//Algorithm::Algorithm(Sticks stick)
 //{
-//    length = l;
-//    table = tab;
+//    sticks = stick;
 //}
 
 int Algorithm::AlgorithmNaive(int table[], int length)
@@ -129,6 +128,41 @@ int Algorithm::AlgorithmMyHeuristic(int table[], int length)
     {
         std::cout << "[" << i << "]: " << table[i] << " "<< std::endl;
     }
+	
+	int sum = 0;
+	int first = table[i];
+	int counter = 1;
+	int tmp;
+	for	(int i = 1; i < length - 3; i++) // bo może być warian ze 3 pierwsze liczby tej samej dlugosci
+	{
+		if(table[i] == first)
+			counter++;
+		
+		else if(counter > 1)//table[i] != first
+		{
+			//counter co najmniej = 2
+			tmp = searchingTwoSidesOfSquare(table, length, i, table[i-1]);
+			//tmp zwraca liczbe wariantow zbudowania boku za pomoca 2 liczb tak zeby suma = table[i-1]
+			
+			// dwa boki mamy zbudowac wiec tmp >= 2
+			sum = sum + newton(tmp, 2)*newton(counter, 2); 
+			
+			if(counter > 2)
+			{	
+				tmp = searchingThreeSticks (table, length, i);
+				sum = sum + tmp * newton(counter, 3);
+			}
+			
+			counter = 1;
+			first = table[i];
+		}
+		
+		else // table[i]!=first && counter == 1
+		{
+			first = table[i];
+		}
+	}
+	
 
     //TODO
 
@@ -172,6 +206,15 @@ void Algorithm::quicksort(int tablica[], int p, int r)
     }
 }
 
+int newton(int n, int k)
+{
+	number = 1;
+	for(int i = 1; i <= k; i++)
+		number = number * ( n - i +1 ) / i;
+	return number;
+}
+
+//zwraca liczbe wariantow gdzie za pomoca 2 liczb mozna otrzymac sume searchingSum
 int searchingTwoSidesOfSquare (int tab[], int length, int position, int searchingSum)
 {
     //TODO
