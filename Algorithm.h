@@ -2,15 +2,14 @@
 #define ALGORITHM_H_INCLUDED
 #include <iostream>
 #include <vector>
-#include <array>
 
 class Algorithm {
 
-		std::vector<std::array<int, 4>> combination;
 		//TODO
 		//trzeba bedzie dodac dwa argumenty:
 		//table[] i length
 		//albo Sticks sticks
+		//std::vector<std::vector<int>> combination; // [n, a, b] n liczba powtorzen a pary a i b to warianty budowy bokow
 
     public:
 
@@ -152,10 +151,7 @@ int Algorithm::AlgorithmMyHeuristic(int table[], int length)
 		else if(table[i] != first && counter > 1)
 		{
 			//counter co najmniej = 2
-			tmp = searchingTwoSidesOfSquare(table, length, i, table[i-1], counter);
-
-			// dwa boki mamy zbudowac wiec tmp >= 2
-			sum += tmp;
+			sum += searchingTwoSidesOfSquare(table, length, i, table[i-1], counter);;
 			std::cout<< "Suma: " << sum << std::endl;
 
 			if(counter > 2)
@@ -228,11 +224,16 @@ int newton(int n, int k)
 //zwraca liczbe wariantow gdzie za pomoca 2 liczb mozna otrzymac sume searchingSum
 int searchingTwoSidesOfSquare (int tab[], int length, int position, int searchingSum, int countedElements)
 {
+
+    //gdzies zle zliczanie przypadkow jest
+
     int i = position, j = length-1;
     int counter = 0;
-    int tmp = 1;
+    int tmp;
+    std::vector<int> combination; // [n, a, b]
     //dla przypadku 12,12,4,4,4,4,4,4,4,4,4
     // gdzie searching sum to 12
+
     if(tab[i] == tab[j] && tab[i] * 2 == searchingSum)
     {
         counter = newton(length - position, 4) * newton(countedElements, 2);
@@ -241,9 +242,9 @@ int searchingTwoSidesOfSquare (int tab[], int length, int position, int searchin
         return counter;
     }
 
-    for(; i != j ;)
+    for( ; i != j, tab[i] >= (int)(searchingSum / 2), tab[j] <= (int)(searchingSum / 2) ; )
     {
-        if(tab[i] + tab[j] > searchingSum)counter = newton(length - position, 4);
+        if(tab[i] + tab[j] > searchingSum)
         {
             i++;
             continue;
@@ -254,26 +255,98 @@ int searchingTwoSidesOfSquare (int tab[], int length, int position, int searchin
             continue;
         }
 
-        //TODO
-        else if(tab[i] + tab[j] == searchingSum)
+        else if(tab[i] + tab[j] == searchingSum && tab[i] != tab[j])
         {
+            tmp = 1;
             while(tab[i+1] + tab[j] == searchingSum)
             {
                 tmp++;
                 i++;
             }
 
-            while(tab[i] + tab[j] == searchingSum)
+            while(tab[i] + tab[j-1] == searchingSum)
             {
                 tmp++;
-                i++;
+                j--;
             }
-            //TODO
 
+            if(combination.empty())
+            {
+                combination.push_back(tmp);
+                combination.push_back(tab[i]);
+                combination.push_back(tab[j]);
+                i++;
+                j--;
+            }
+
+            else
+            {
+                int n,a,b;
+                int counterTmp;
+                for(int it = 0; it < combination.size(); it++)
+                {
+                    n = combination[it++];
+                    a = combination[it++];
+                    b = combination[it++];
+
+
+                    counterTmp = newton(countedElements, 2) * n * tmp;
+                    counter = counter + counterTmp;
+                    if(counterTmp > 0)
+                        std::cout << tab[position-1] << " " << tab[position-1] << " " << a << " " << b << " " << tab[i] << " " << tab[j] << " the same 6 elements for " << counterTmp << " combination."<<std::endl;
+                }
+
+                counterTmp = newton(tmp, 4) * newton(countedElements, 2);
+                counter = counter + counterTmp;
+
+                if(counterTmp > 0)
+                    std::cout << tab[position-1] << " " << tab[position-1] << " " << tab[i] << " " << tab[i] << " " << tab[i] << " " << tab[i] << " the same 6 elements for " << counterTmp << " combination."<<std::endl;
+
+                combination.push_back(tmp);
+                combination.push_back(tab[i]);
+                combination.push_back(tab[j]);
+                i++;
+                j--;
+            }
+
+        }
+
+        else // tab[i] + tab[j] == searchingSum && tab[i] == tab[j]
+        {
+
+
+            int theSameElements = j - i + 1;
+
+            int n,a,b;
+            int counterTmp;
+
+            for(int it = 0; it < combination.size(); it++)
+            {
+                n = combination[it++];
+                a = combination[it++];
+                b = combination[it++];
+
+
+                counterTmp = newton(countedElements, 2) * n * newton(theSameElements, 2);
+                counter = counter + counterTmp;
+                if(counterTmp > 0)
+                    std::cout << tab[position-1] << " " << tab[position-1] << " " << a << " " << b << " " << tab[i] << " " << tab[j] << " the same 6 elements for " << counterTmp << " combination."<<std::endl;
+            }
+
+            counterTmp = newton(tmp, 4) * newton(countedElements, 2);
+            counter = counter + counterTmp;
+
+            if(counterTmp > 0)
+                std::cout << tab[position-1] << " " << tab[position-1] << " " << tab[i] << " " << tab[i] << " " << tab[i] << " " << tab[i] << " the same 6 elements for " << counterTmp << " combination."<<std::endl;
+
+
+            break;
 
         }
 
     }
+
+    combination.clear();
 
 
     return counter;
