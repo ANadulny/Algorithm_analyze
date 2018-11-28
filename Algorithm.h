@@ -5,16 +5,30 @@
 class Algorithm {
 
         //Sticks sticks;
+		//vector< array<int, 2>>
+		// nie moze byc taki wektor
+		// zamienic na wektor 2 wymiarowy albo wektor tablicy dwoch intow 
+		vector<int> pairs;
 
     public:
+		Algorithm();
         //Algorithm(Sticks sticks);
 
+		void addPairs(int a, int b); // dodanie pary do wektora
+		void clearPairs() // czyszczenie wektora par 
+		
         int AlgorithmNaive(int table[], int length);
         int AlgorithmMyHeuristic(int table[], int length);
 
         void quicksort(int tablica[], int p, int r);
 
 };
+
+Algorithm::Algorithm()
+{
+	//???
+	pairs = none;
+}
 
 //Algorithm::Algorithm(Sticks stick)
 //{
@@ -133,24 +147,34 @@ int Algorithm::AlgorithmMyHeuristic(int table[], int length)
 	int first = table[i];
 	int counter = 1;
 	int tmp;
+	
 	for	(int i = 1; i < length - 3; i++) // bo może być warian ze 3 pierwsze liczby tej samej dlugosci
 	{
 		if(table[i] == first)
 			counter++;
 		
-		else if(counter > 1)//table[i] != first
+		else if(table[i] != first && counter > 1)
 		{
 			//counter co najmniej = 2
 			tmp = searchingTwoSidesOfSquare(table, length, i, table[i-1]);
 			//tmp zwraca liczbe wariantow zbudowania boku za pomoca 2 liczb tak zeby suma = table[i-1]
 			
 			// dwa boki mamy zbudowac wiec tmp >= 2
-			sum = sum + newton(tmp, 2)*newton(counter, 2); 
+			sum = sum + newton(tmp, 2) * newton(counter, 2); 
+			std::cout<< "Suma: " << sum <<std::endl;
+			// TODO
+			// Petla wypisujaca z vektora pary liczb
+			// Nastepnie 
+			// z uwzglednieniem 2 liczb maximum - table[i-1]
+			// problem z wypisywaniem kobinacji 6 liczb
 			
 			if(counter > 2)
 			{	
 				tmp = searchingThreeSticks (table, length, i);
 				sum = sum + tmp * newton(counter, 3);
+				std::cout<< "Suma: " << sum <<std::endl;
+				// TODO
+				// Petla wypisujaca z vektora pary liczb
 			}
 			
 			counter = 1;
@@ -162,11 +186,8 @@ int Algorithm::AlgorithmMyHeuristic(int table[], int length)
 			first = table[i];
 		}
 	}
-	
 
-    //TODO
-
-    return length;
+    return sum;
 }
 
 int partition(int tablica[], int p, int r)
@@ -218,12 +239,14 @@ int newton(int n, int k)
 int searchingTwoSidesOfSquare (int tab[], int length, int position, int searchingSum)
 {
     //TODO
+	// wstawiamy 
     return 1;
 }
 
 int searchingThreeSticks (int tab[], int length, int position)
 {
     //TODO
+	//
     return 2;
 }
 #endif // ALGORITHM_H_INCLUDED
