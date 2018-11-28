@@ -1,22 +1,22 @@
 #ifndef ALGORITHM_H_INCLUDED
 #define ALGORITHM_H_INCLUDED
 #include <iostream>
+#include <vector>
+#include <array>
 
 class Algorithm {
 
-        //Sticks sticks;
-		//vector< array<int, 2>>
-		// nie moze byc taki wektor
-		// zamienic na wektor 2 wymiarowy albo wektor tablicy dwoch intow 
-		vector<int> pairs;
+		std::vector<std::array<int, 4>> combination;
+		//TODO
+		//trzeba bedzie dodac dwa argumenty:
+		//table[] i length
+		//albo Sticks sticks
 
     public:
-		Algorithm();
-        //Algorithm(Sticks sticks);
 
-		void addPairs(int a, int b); // dodanie pary do wektora
-		void clearPairs() // czyszczenie wektora par 
-		
+		//void addPairs(int a, int b); // dodanie pary do wektora
+		//void clearPairs(); // czyszczenie wektora par
+
         int AlgorithmNaive(int table[], int length);
         int AlgorithmMyHeuristic(int table[], int length);
 
@@ -24,16 +24,8 @@ class Algorithm {
 
 };
 
-Algorithm::Algorithm()
-{
-	//???
-	pairs = none;
-}
 
-//Algorithm::Algorithm(Sticks stick)
-//{
-//    sticks = stick;
-//}
+//Algorithm::Algorithm() { }
 
 int Algorithm::AlgorithmNaive(int table[], int length)
 {
@@ -135,6 +127,10 @@ int Algorithm::AlgorithmNaive(int table[], int length)
     return counter;
 }
 
+int searchingTwoSidesOfSquare (int tab[], int length, int position, int searchingSum, int countedElements);
+int searchingThreeSticks (int tab[], int length, int position);
+int newton(int n, int k);
+
 int Algorithm::AlgorithmMyHeuristic(int table[], int length)
 {
     quicksort(table,0,length-1);
@@ -142,45 +138,39 @@ int Algorithm::AlgorithmMyHeuristic(int table[], int length)
     {
         std::cout << "[" << i << "]: " << table[i] << " "<< std::endl;
     }
-	
+
 	int sum = 0;
-	int first = table[i];
+	int first = table[0];
 	int counter = 1;
 	int tmp;
-	
+
 	for	(int i = 1; i < length - 3; i++) // bo może być warian ze 3 pierwsze liczby tej samej dlugosci
 	{
 		if(table[i] == first)
 			counter++;
-		
+
 		else if(table[i] != first && counter > 1)
 		{
 			//counter co najmniej = 2
-			tmp = searchingTwoSidesOfSquare(table, length, i, table[i-1]);
-			//tmp zwraca liczbe wariantow zbudowania boku za pomoca 2 liczb tak zeby suma = table[i-1]
-			
+			tmp = searchingTwoSidesOfSquare(table, length, i, table[i-1], counter);
+
 			// dwa boki mamy zbudowac wiec tmp >= 2
-			sum = sum + newton(tmp, 2) * newton(counter, 2); 
-			std::cout<< "Suma: " << sum <<std::endl;
-			// TODO
-			// Petla wypisujaca z vektora pary liczb
-			// Nastepnie 
-			// z uwzglednieniem 2 liczb maximum - table[i-1]
-			// problem z wypisywaniem kobinacji 6 liczb
-			
+			sum += tmp;
+			std::cout<< "Suma: " << sum << std::endl;
+
 			if(counter > 2)
-			{	
+			{
 				tmp = searchingThreeSticks (table, length, i);
 				sum = sum + tmp * newton(counter, 3);
-				std::cout<< "Suma: " << sum <<std::endl;
+				std::cout<< "Suma: " << sum << std::endl;
 				// TODO
 				// Petla wypisujaca z vektora pary liczb
 			}
-			
+
 			counter = 1;
 			first = table[i];
 		}
-		
+
 		else // table[i]!=first && counter == 1
 		{
 			first = table[i];
@@ -229,24 +219,71 @@ void Algorithm::quicksort(int tablica[], int p, int r)
 
 int newton(int n, int k)
 {
-	number = 1;
+	int number = 1;
 	for(int i = 1; i <= k; i++)
 		number = number * ( n - i +1 ) / i;
 	return number;
 }
 
 //zwraca liczbe wariantow gdzie za pomoca 2 liczb mozna otrzymac sume searchingSum
-int searchingTwoSidesOfSquare (int tab[], int length, int position, int searchingSum)
+int searchingTwoSidesOfSquare (int tab[], int length, int position, int searchingSum, int countedElements)
 {
-    //TODO
-	// wstawiamy 
-    return 1;
+    int i = position, j = length-1;
+    int counter = 0;
+    int tmp = 1;
+    //dla przypadku 12,12,4,4,4,4,4,4,4,4,4
+    // gdzie searching sum to 12
+    if(tab[i] == tab[j] && tab[i] * 2 == searchingSum)
+    {
+        counter = newton(length - position, 4) * newton(countedElements, 2);
+        std::cout << tab[position-1] << " " << tab[position-1] << " " << tab[i] << " " << tab[i] << " " << tab[i] << " " << tab[i];
+        std::cout << " the same 6 elements for " << counter << " combination."<<std::endl;
+        return counter;
+    }
+
+    for(; i != j ;)
+    {
+        if(tab[i] + tab[j] > searchingSum)counter = newton(length - position, 4);
+        {
+            i++;
+            continue;
+        }
+        else if(tab[i] + tab[j] < searchingSum)
+        {
+            j--;
+            continue;
+        }
+
+        //TODO
+        else if(tab[i] + tab[j] == searchingSum)
+        {
+            while(tab[i+1] + tab[j] == searchingSum)
+            {
+                tmp++;
+                i++;
+            }
+
+            while(tab[i] + tab[j] == searchingSum)
+            {
+                tmp++;
+                i++;
+            }
+            //TODO
+
+
+        }
+
+    }
+
+
+    return counter;
 }
 
 int searchingThreeSticks (int tab[], int length, int position)
 {
     //TODO
-	//
-    return 2;
+    int counter = 0;
+	//for(int i = position)
+    return counter;
 }
 #endif // ALGORITHM_H_INCLUDED
