@@ -132,7 +132,7 @@ int newton(int n, int k);
 
 int Algorithm::AlgorithmMyHeuristic(int table[], int length)
 {
-    quicksort(table,0,length-1);
+    quicksort(table, 0, length-1);
     for(int i = 0; i < length; i++)
     {
         std::cout << "[" << i << "]: " << table[i] << " "<< std::endl;
@@ -141,7 +141,6 @@ int Algorithm::AlgorithmMyHeuristic(int table[], int length)
 	int sum = 0;
 	int first = table[0];
 	int counter = 1;
-	int tmp;
 
 	for	(int i = 1; i < length - 3; i++) // bo może być warian ze 3 pierwsze liczby tej samej dlugosci
 	{
@@ -151,13 +150,12 @@ int Algorithm::AlgorithmMyHeuristic(int table[], int length)
 		else if(table[i] != first && counter > 1)
 		{
 			//counter co najmniej = 2
-			sum += searchingTwoSidesOfSquare(table, length, i, table[i-1], counter);;
+			sum += searchingTwoSidesOfSquare(table, length, i, table[i-1], counter);
 			std::cout<< "Suma: " << sum << std::endl;
 
 			if(counter > 2)
 			{
-				tmp = searchingThreeSticks (table, length, i);
-				sum = sum + tmp * newton(counter, 3);
+				//sum = sum + searchingThreeSticks (table, length, i) * newton(counter, 3);
 				std::cout<< "Suma: " << sum << std::endl;
 				// TODO
 				// Petla wypisujaca z vektora pary liczb
@@ -224,15 +222,10 @@ int newton(int n, int k)
 //zwraca liczbe wariantow gdzie za pomoca 2 liczb mozna otrzymac sume searchingSum
 int searchingTwoSidesOfSquare (int tab[], int length, int position, int searchingSum, int countedElements)
 {
-
-    //gdzies zle zliczanie przypadkow jest
-
     int i = position, j = length-1;
     int counter = 0;
-    int tmp;
+    int tmpi,tmpj,tmp;
     std::vector<int> combination; // [n, a, b]
-    //dla przypadku 12,12,4,4,4,4,4,4,4,4,4
-    // gdzie searching sum to 12
 
     if(tab[i] == tab[j] && tab[i] * 2 == searchingSum)
     {
@@ -242,7 +235,7 @@ int searchingTwoSidesOfSquare (int tab[], int length, int position, int searchin
         return counter;
     }
 
-    for( ; i != j, tab[i] >= (int)(searchingSum / 2), tab[j] <= (int)(searchingSum / 2) ; )
+    while( i != j && tab[i] >= (int)(searchingSum / 2) && tab[j] <= (int)(searchingSum / 2) ) // sprawdzic potem wydajnosc tego rozwiazania
     {
         if(tab[i] + tab[j] > searchingSum)
         {
@@ -255,100 +248,90 @@ int searchingTwoSidesOfSquare (int tab[], int length, int position, int searchin
             continue;
         }
 
-        else if(tab[i] + tab[j] == searchingSum && tab[i] != tab[j])
+        else if(tab[i] + tab[j] == searchingSum ) //&& tab[i] != tab[j])
         {
-            tmp = 1;
+            tmpi = 1;
             while(tab[i+1] + tab[j] == searchingSum)
             {
-                tmp++;
+                tmpi++;
                 i++;
             }
 
-            while(tab[i] + tab[j-1] == searchingSum)
+            if( i != j)
             {
-                tmp++;
-                j--;
+                tmpj = 1;
+                while(tab[i] + tab[j-1] == searchingSum)
+                {
+                    tmpj++;
+                    j--;
+                }
+                tmp = tmpj * tmpi;
             }
+
+            else
+            {
+                tmp = tmpi * (tmpi - 1) / 2;
+            }
+            //tmp - ile wariantow danego typu pojawilo sie
+            //tmpi - ile takich samych liczb z gory pojawilo sie
+            //tmpj - ile takich samych liczb z dolu pojawilo sie
 
             if(combination.empty())
             {
+                if(i == j)
+                    counter = newton(countedElements, 2) * newton(tmpi, 4);
+                else
+                    counter = newton(countedElements, 2) * newton(tmpi, 2) * newton(tmpj, 2);
+
+                if(counter > 0)
+                {
+                    std::cout << tab[position-1] << " " << tab[position-1] << " " << tab[i] << " " << tab[i] << " " << tab[j] << " " << tab[j] << " the same 6 elements for " << counter << " combination."<<std::endl;
+                }
+
                 combination.push_back(tmp);
                 combination.push_back(tab[i]);
                 combination.push_back(tab[j]);
                 i++;
-                j--;
             }
 
             else
             {
                 int n,a,b;
                 int counterTmp;
-                for(int it = 0; it < combination.size(); it++)
+                for(int it = 0; it < combination.size();) // wariant gdzie 1 i 2 liczba to max, 3 i 4 z wektora wzieta i 5 oraz 6 wyliczona w tej iteracji
                 {
                     n = combination[it++];
                     a = combination[it++];
                     b = combination[it++];
 
-
-                    counterTmp = newton(countedElements, 2) * n * tmp;
+                    counterTmp = newton(countedElements, 2) * n * tmp ;
                     counter = counter + counterTmp;
-                    if(counterTmp > 0)
-                        std::cout << tab[position-1] << " " << tab[position-1] << " " << a << " " << b << " " << tab[i] << " " << tab[j] << " the same 6 elements for " << counterTmp << " combination."<<std::endl;
+                    std::cout << tab[position-1] << " " << tab[position-1] << " " << a << " " << b << " " << tab[i] << " " << tab[j] << " the same 6 elements for " << counterTmp << " combination."<<std::endl;
+
                 }
 
-                counterTmp = newton(tmp, 4) * newton(countedElements, 2);
-                counter = counter + counterTmp;
+                counterTmp = 0;
+                if(i == j)
+                {
+                    counterTmp = newton(countedElements, 2) * newton(tmpi, 4);
+                }
+                else
+                {
+                    counterTmp = newton(countedElements, 2) * newton(tmpi, 2) * newton(tmpj, 2);
+                }
 
+                counter = counter + counterTmp;
                 if(counterTmp > 0)
-                    std::cout << tab[position-1] << " " << tab[position-1] << " " << tab[i] << " " << tab[i] << " " << tab[i] << " " << tab[i] << " the same 6 elements for " << counterTmp << " combination."<<std::endl;
+                    std::cout << tab[position-1] << " " << tab[position-1] << " " << tab[i] << " " << tab[i] << " " << tab[j] << " " << tab[j] << " the same 6 elements for " << counterTmp << " combination."<<std::endl;
 
                 combination.push_back(tmp);
                 combination.push_back(tab[i]);
                 combination.push_back(tab[j]);
-                i++;
-                j--;
+                i++; // ewentualnie j-- mozna dodac i sprawdzic czy cos szybciej dziala
             }
-
         }
-
-        else // tab[i] + tab[j] == searchingSum && tab[i] == tab[j]
-        {
-
-
-            int theSameElements = j - i + 1;
-
-            int n,a,b;
-            int counterTmp;
-
-            for(int it = 0; it < combination.size(); it++)
-            {
-                n = combination[it++];
-                a = combination[it++];
-                b = combination[it++];
-
-
-                counterTmp = newton(countedElements, 2) * n * newton(theSameElements, 2);
-                counter = counter + counterTmp;
-                if(counterTmp > 0)
-                    std::cout << tab[position-1] << " " << tab[position-1] << " " << a << " " << b << " " << tab[i] << " " << tab[j] << " the same 6 elements for " << counterTmp << " combination."<<std::endl;
-            }
-
-            counterTmp = newton(tmp, 4) * newton(countedElements, 2);
-            counter = counter + counterTmp;
-
-            if(counterTmp > 0)
-                std::cout << tab[position-1] << " " << tab[position-1] << " " << tab[i] << " " << tab[i] << " " << tab[i] << " " << tab[i] << " the same 6 elements for " << counterTmp << " combination."<<std::endl;
-
-
-            break;
-
-        }
-
     }
-
     combination.clear();
-
-
     return counter;
 }
 
