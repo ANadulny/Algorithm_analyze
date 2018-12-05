@@ -2,6 +2,7 @@
 #include <chrono>
 #include <random>
 #include <chrono>
+#include <fstream>
 #include "Sticks.h"
 #include "Algorithm.h"
 
@@ -9,12 +10,12 @@ using namespace std;
 
 void UI();
 int newStickNumber();
-void screen (Sticks &sticks);
-void screen1(Sticks &sticks);
+void optionScreen (Sticks &sticks);
+void changeStick(Sticks &sticks);
 void generateStickTableElements(Sticks &sticks);
 void showStickTableElements(Sticks &sticks);
 void generateOwnStickTableElements(Sticks &sticks);
-void screen2(Sticks &sticks);
+void algorithmsTimeMeasure(Sticks &sticks);
 
 //int AlgorithmNaive(int table[], int lengt);
 
@@ -42,7 +43,7 @@ void UI()
     while(1)
     {
         system("clear");
-        screen( sticks );
+        optionScreen( sticks );
         cin >> decision;
 
         if(cin.fail() )
@@ -58,7 +59,7 @@ void UI()
         switch(decision)
         {
             case 1:
-                screen1( sticks );
+                changeStick( sticks );
                 break;
             case 2:
                 generateStickTableElements(sticks);
@@ -67,7 +68,7 @@ void UI()
                 generateOwnStickTableElements(sticks);
                 break;
             case 4:
-                screen2(sticks);
+                algorithmsTimeMeasure(sticks);
                 break;
             case 5:
                 showStickTableElements(sticks);
@@ -75,7 +76,6 @@ void UI()
             default:
                 return;
         }
-
     }
 }
 
@@ -94,7 +94,7 @@ int newStickNumber()
     return stickNumber;
 }
 
-void screen (Sticks &sticks)
+void optionScreen (Sticks &sticks)
 {
     cout<<"Current S value: "<<sticks.getStickNumber()<<endl;
 	cout<<"Write correct number:"<<endl;
@@ -106,7 +106,7 @@ void screen (Sticks &sticks)
 	cout<<"[6] End program" <<endl;
 }
 
-void screen1(Sticks &sticks)
+void changeStick(Sticks &sticks)
 {
     system("clear");
     cout<<"Write new sticks number S:"<<endl;
@@ -152,45 +152,50 @@ void generateOwnStickTableElements(Sticks &sticks)
     }
 }
 
-void screen2(Sticks &sticks)
+void algorithmsTimeMeasure(Sticks &sticks)
 {
     system("clear");
     int stickTable[sticks.getStickNumber()];
 
-    //testing
-    for ( int i = 0; i < sticks.getStickNumber(); i++ ) {
-        cout << "[" << i << "]: " << *(sticks.getStickTable()+i) <<"  ";
-        stickTable[i] = *(sticks.getStickTable()+i);
-
-        if(i%5 == 0 && i != 0)
-            cout << endl;
-    }
-    cout << endl;
-
+    int squaresNumber;
+    //Algorithm algorithm(sticks); //zamiast stickTable to stick.getStickTable()
     Algorithm algorithm;
-
     cout<<"[1] NaiveAlgorithm"<<endl;
+
+    ofstream naiveAlgorithmFile;
+    naiveAlgorithmFile.open("naiveAlgorithm.txt");
+    naiveAlgorithmFile << "Naive Algorithm:\n";
+    naiveAlgorithmFile << "===========================================\n";
 
     cout << "===========================================" << endl;
     std::chrono::time_point<std::chrono::system_clock> start = std::chrono::system_clock::now();
-    cout << algorithm.AlgorithmNaive(stickTable, sticks.getStickNumber() ) << ": Squares number" << endl;
+    squaresNumber = algorithm.AlgorithmNaive(sticks.getStickTable(), sticks.getStickNumber(), naiveAlgorithmFile );
+    cout << squaresNumber << ": Squares number" << endl;
     std::chrono::time_point<std::chrono::system_clock> end = std::chrono::system_clock::now();
     std::chrono::duration<double> elapsed_seconds = end - start;
     cout << "===========================================" << endl;
     cout << "Algorithm time: " << elapsed_seconds.count() << endl;
 
+    naiveAlgorithmFile << "Squares number: " << squaresNumber << "\n";
+    naiveAlgorithmFile << "===========================================\n";
+    naiveAlgorithmFile << "Algorithm time: " << elapsed_seconds.count() << "\n";
+    naiveAlgorithmFile.close();
+
     cout << endl;
 
 	cout<<"[2] AlgorithmMyHeuristic" <<endl;
 
+    ofstream myHeuristicAlgorithmFile;
 	cout << "===========================================" << endl;
     start = std::chrono::system_clock::now();
-    cout << algorithm.AlgorithmMyHeuristic(stickTable, sticks.getStickNumber() ) << ": Squares number" << endl;
+    cout << algorithm.AlgorithmMyHeuristic(sticks.getStickTable(), sticks.getStickNumber() ) << ": Squares number" << endl;
     end = std::chrono::system_clock::now();
     elapsed_seconds = end - start;
     cout << "===========================================" << endl;
     cout << "Algorithm time: " << elapsed_seconds.count() << endl;
+    myHeuristicAlgorithmFile.close();
 
-    string a;
-    cin >> a;
+    string goBack;
+    cout << "\nPress key to go back to main panel."<<endl;
+    cin >> goBack;
 }

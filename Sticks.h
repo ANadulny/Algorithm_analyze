@@ -2,7 +2,7 @@
 #define STICKS_H_INCLUDED
 class Sticks {
 
-        unsigned int stickNumber;
+        int stickNumber; //unsigned
         int *stickTable;
 
     public:

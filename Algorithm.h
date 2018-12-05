@@ -2,34 +2,41 @@
 #define ALGORITHM_H_INCLUDED
 #include <iostream>
 #include <vector>
+#include <fstream>
 
 class Algorithm {
 
-		//TODO
-		//trzeba bedzie dodac dwa argumenty:
-		//table[] i length
-		//albo Sticks sticks
+
 		//std::vector<std::vector<int>> combination; // [n, a, b] n liczba powtorzen a pary a i b to warianty budowy bokow
 
+        // do ogarniecia
+        //Sticks sticks;
+
+
     public:
+        //Algorithm(const Sticks& sticks);
 
-		//void addPairs(int a, int b); // dodanie pary do wektora
-		//void clearPairs(); // czyszczenie wektora par
-
-        int AlgorithmNaive(int table[], int length);
+        void setMyFile(std::ofstream& file);
+        int AlgorithmNaive(int table[], int length, std::ofstream& myFile);
         int AlgorithmMyHeuristic(int table[], int length);
 
         void quicksort(int tablica[], int p, int r);
-
+        //~Algorithm();
 };
-
-
-//Algorithm::Algorithm() { }
-
-int Algorithm::AlgorithmNaive(int table[], int length)
+/*
+Algorithm::Algorithm(const Sticks& stick)
 {
+    sticks = stick;
+    //this->table = table;
+}*/
+
+int Algorithm::AlgorithmNaive(int table[], int length, std::ofstream& myFile)
+{
+    for ( int i = 0; i < length; i++ )
+        myFile << "[" << i << "]: " << table[i] << "\n";
+
     if (length < 6) {
-        std::cout << "Length is less than 6!" << std::endl;
+        myFile << "Length is less than 6!\n";
         return 0;
     }
 
@@ -81,11 +88,11 @@ int Algorithm::AlgorithmNaive(int table[], int length)
                             {
                                 counter++;
 
-                                //Testing
                                 for(int i = 0; i < 6; i++)
-                                    std::cout << tab[i] << " ";
-                                std::cout << " (3" << std::endl;
-                                std::cout << "MAx elem: "<<max_elem<<"   Counting: " << counting << "   Sum: " << sum << std::endl;
+                                    myFile << tab[i] << " ";
+
+                                myFile << "\n";
+                                myFile << "MAx elem: " << max_elem << "   Counting: " << counting << "   Sum: " << sum << "\n";
                             }
 
                             else if (counting == 2 && sum == (max_elem * 4)) // the largest 2 sticks have the same number
@@ -106,15 +113,14 @@ int Algorithm::AlgorithmNaive(int table[], int length)
                                     {
                                         counter++;
 
-                                        //Testing
                                         for(int i = 0; i < 6; i++)
-                                            std::cout << tab[i] << " ";
-                                        std::cout << " (2" << std::endl;
-                                        std::cout << "MAx elem: "<<max_elem<<"   Counting: " << counting << "   Sum: " << sum << std::endl;
+                                            myFile << tab[i] << " ";
+
+                                        myFile << "\n";
+                                        myFile << "MAx elem: " << max_elem << "   Counting: " << counting << "   Sum: " << sum << "\n";
                                         break;
                                     }
                                 }
-
                             }
                         }
                     }
@@ -155,7 +161,7 @@ int Algorithm::AlgorithmMyHeuristic(int table[], int length)
 
 			if(counter > 2)
 			{
-				//sum = sum + searchingThreeSticks (table, length, i) * newton(counter, 3);
+				sum = sum + searchingThreeSticks (table, length, i) * newton(counter, 3);
 				std::cout<< "Suma: " << sum << std::endl;
 				// TODO
 				// Petla wypisujaca z vektora pary liczb
@@ -222,33 +228,29 @@ int newton(int n, int k)
 //zwraca liczbe wariantow gdzie za pomoca 2 liczb mozna otrzymac sume searchingSum
 int searchingTwoSidesOfSquare (int tab[], int length, int position, int searchingSum, int countedElements)
 {
-    int i = position, j = length-1;
+    int i = position, j = length - 1;
     int counter = 0;
     int tmpi,tmpj,tmp;
     std::vector<int> combination; // [n, a, b]
 
+    /*
     if(tab[i] == tab[j] && tab[i] * 2 == searchingSum)
     {
         counter = newton(length - position, 4) * newton(countedElements, 2);
         std::cout << tab[position-1] << " " << tab[position-1] << " " << tab[i] << " " << tab[i] << " " << tab[i] << " " << tab[i];
         std::cout << " the same 6 elements for " << counter << " combination."<<std::endl;
         return counter;
-    }
+    }*/
 
-    while( i != j && tab[i] >= (int)(searchingSum / 2) && tab[j] <= (int)(searchingSum / 2) ) // sprawdzic potem wydajnosc tego rozwiazania
+    while( i != j && tab[i] >= (int)(searchingSum / 2) && tab[j] <= (int)(searchingSum / 2) )
     {
         if(tab[i] + tab[j] > searchingSum)
-        {
             i++;
-            continue;
-        }
-        else if(tab[i] + tab[j] < searchingSum)
-        {
-            j--;
-            continue;
-        }
 
-        else if(tab[i] + tab[j] == searchingSum ) //&& tab[i] != tab[j])
+        else if(tab[i] + tab[j] < searchingSum)
+            j--;
+
+        else //if(tab[i] + tab[j] == searchingSum )
         {
             tmpi = 1;
             while(tab[i+1] + tab[j] == searchingSum)
@@ -296,9 +298,9 @@ int searchingTwoSidesOfSquare (int tab[], int length, int position, int searchin
 
             else
             {
-                int n,a,b;
+                int n, a, b;
                 int counterTmp;
-                for(int it = 0; it < combination.size();) // wariant gdzie 1 i 2 liczba to max, 3 i 4 z wektora wzieta i 5 oraz 6 wyliczona w tej iteracji
+                for(unsigned int it = 0; it < combination.size();) // wariant gdzie 1 i 2 liczba to max, 3 i 4 z wektora wzieta i 5 oraz 6 wyliczona w tej iteracji
                 {
                     n = combination[it++];
                     a = combination[it++];
@@ -312,13 +314,10 @@ int searchingTwoSidesOfSquare (int tab[], int length, int position, int searchin
 
                 counterTmp = 0;
                 if(i == j)
-                {
                     counterTmp = newton(countedElements, 2) * newton(tmpi, 4);
-                }
+
                 else
-                {
                     counterTmp = newton(countedElements, 2) * newton(tmpi, 2) * newton(tmpj, 2);
-                }
 
                 counter = counter + counterTmp;
                 if(counterTmp > 0)
