@@ -6,35 +6,42 @@
 
 class Algorithm {
 
-
-		//std::vector<std::vector<int>> combination; // [n, a, b] n liczba powtorzen a pary a i b to warianty budowy bokow
-
-        // do ogarniecia
-        //Sticks sticks;
-
+        int length;
+        int *algorithmTable;
+        std::vector<int> combination; // [n, a, b]
 
     public:
-        //Algorithm(const Sticks& sticks);
+        Algorithm(Sticks& stick);
 
-        void setMyFile(std::ofstream& file);
-        int AlgorithmNaive(int table[], int length, std::ofstream& myFile);
-        int AlgorithmMyHeuristic(int table[], int length);
+        int AlgorithmNaive( std::ofstream& myFile);
+        int AlgorithmMyHeuristic( std::ofstream& myFile);
 
+        ~Algorithm();
+
+    private:
         void quicksort(int tablica[], int p, int r);
-        //~Algorithm();
+        int searchingTwoSidesOfSquare ( int position, int countedElements, std::ofstream& myFile);
+        int searchingThreeSticks (int position, int countedElements, std::ofstream& myFile);
 };
-/*
-Algorithm::Algorithm(const Sticks& stick)
-{
-    sticks = stick;
-    //this->table = table;
-}*/
 
-int Algorithm::AlgorithmNaive(int table[], int length, std::ofstream& myFile)
+
+Algorithm::Algorithm( Sticks& stick)
+{
+    length = stick.getStickNumber();
+    algorithmTable = stick.getNewStickTable();
+}
+
+Algorithm::~Algorithm(){
+    delete []algorithmTable;
+    algorithmTable = nullptr;
+}
+
+int Algorithm::AlgorithmNaive( std::ofstream& myFile)
 {
     for ( int i = 0; i < length; i++ )
-        myFile << "[" << i << "]: " << table[i] << "\n";
+        myFile << "[" << i << "]: " << algorithmTable[i] << "\n";
 
+    myFile << "===========================================\n";
     if (length < 6) {
         myFile << "Length is less than 6!\n";
         return 0;
@@ -45,24 +52,24 @@ int Algorithm::AlgorithmNaive(int table[], int length, std::ofstream& myFile)
 
     for(int i1 = 0; i1 < length-5; i1++)
     {
-        tab[0] = table[i1];
+        tab[0] = algorithmTable[i1];
         int max_elem;
         for(int i2 = 1 + i1; i2 < length-4; i2++)
         {
-            tab[1] = table[i2];
+            tab[1] = algorithmTable[i2];
             for(int i3 = 1 + i2; i3 < length-3; i3++)
             {
-                tab[2] = table[i3];
+                tab[2] = algorithmTable[i3];
                 for(int i4 = 1 + i3; i4 < length-2; i4++)
                 {
-                    tab[3] = table[i4];
+                    tab[3] = algorithmTable[i4];
                     for(int i5 = 1 + i4; i5 < length-1; i5++)
                     {
-                        tab[4] = table[i5];
+                        tab[4] = algorithmTable[i5];
                         for(int i6 = 1 + i5; i6 < length; i6++)
                         {
                             int counting = 1;
-                            tab[5] = table[i6];
+                            tab[5] = algorithmTable[i6];
                             int sum = 0;
 
                             for(int i = 0; i < 6; i++) //searching the max number
@@ -92,7 +99,7 @@ int Algorithm::AlgorithmNaive(int table[], int length, std::ofstream& myFile)
                                     myFile << tab[i] << " ";
 
                                 myFile << "\n";
-                                myFile << "MAx elem: " << max_elem << "   Counting: " << counting << "   Sum: " << sum << "\n";
+                                //myFile << "MAx elem: " << max_elem << "   Counting: " << counting << "   Sum: " << sum << "\n";
                             }
 
                             else if (counting == 2 && sum == (max_elem * 4)) // the largest 2 sticks have the same number
@@ -117,7 +124,7 @@ int Algorithm::AlgorithmNaive(int table[], int length, std::ofstream& myFile)
                                             myFile << tab[i] << " ";
 
                                         myFile << "\n";
-                                        myFile << "MAx elem: " << max_elem << "   Counting: " << counting << "   Sum: " << sum << "\n";
+                                        //myFile << "MAx elem: " << max_elem << "   Counting: " << counting << "   Sum: " << sum << "\n";
                                         break;
                                     }
                                 }
@@ -128,55 +135,47 @@ int Algorithm::AlgorithmNaive(int table[], int length, std::ofstream& myFile)
             }
         }
     }
-
     return counter;
 }
 
-int searchingTwoSidesOfSquare (int tab[], int length, int position, int searchingSum, int countedElements);
-int searchingThreeSticks (int tab[], int length, int position);
+int searchingTwoSidesOfSquare ( int position, int countedElements, std::ofstream& myFile);
+int searchingThreeSticks (int position);
 int newton(int n, int k);
 
-int Algorithm::AlgorithmMyHeuristic(int table[], int length)
+int Algorithm::AlgorithmMyHeuristic( std::ofstream& myFile)
 {
-    quicksort(table, 0, length-1);
+    quicksort(algorithmTable, 0, length-1);
+
     for(int i = 0; i < length; i++)
-    {
-        std::cout << "[" << i << "]: " << table[i] << " "<< std::endl;
-    }
+        myFile << "[" << i << "]: " << algorithmTable[i] << " \n";
+
+    myFile << "===========================================\n";
 
 	int sum = 0;
-	int first = table[0];
+	int first = algorithmTable[0];
 	int counter = 1;
 
 	for	(int i = 1; i < length - 3; i++) // bo może być warian ze 3 pierwsze liczby tej samej dlugosci
 	{
-		if(table[i] == first)
+		if(algorithmTable[i] == first)
 			counter++;
 
-		else if(table[i] != first && counter > 1)
+		else if(algorithmTable[i] != first && counter > 1)
 		{
-			//counter co najmniej = 2
-			sum += searchingTwoSidesOfSquare(table, length, i, table[i-1], counter);
-			std::cout<< "Suma: " << sum << std::endl;
+			sum += searchingTwoSidesOfSquare(i, counter, myFile);
 
 			if(counter > 2)
-			{
-				sum = sum + searchingThreeSticks (table, length, i) * newton(counter, 3);
-				std::cout<< "Suma: " << sum << std::endl;
-				// TODO
-				// Petla wypisujaca z vektora pary liczb
-			}
+				sum = sum + searchingThreeSticks (i, counter, myFile);
 
 			counter = 1;
-			first = table[i];
+			first = algorithmTable[i];
 		}
 
 		else // table[i]!=first && counter == 1
 		{
-			first = table[i];
+			first = algorithmTable[i];
 		}
 	}
-
     return sum;
 }
 
@@ -225,35 +224,34 @@ int newton(int n, int k)
 	return number;
 }
 
-//zwraca liczbe wariantow gdzie za pomoca 2 liczb mozna otrzymac sume searchingSum
-int searchingTwoSidesOfSquare (int tab[], int length, int position, int searchingSum, int countedElements)
+//zwraca liczbe wariantow gdzie za pomoca 2 liczb mozna otrzymac sume algorithmTable[position-1]
+int Algorithm::searchingTwoSidesOfSquare ( int position, int countedElements, std::ofstream& myFile)
 {
-    int i = position, j = length - 1;
     int counter = 0;
+    combination.clear(); // [n, a, b]
+    int i = position, j = length - 1;
     int tmpi,tmpj,tmp;
-    std::vector<int> combination; // [n, a, b]
-
     /*
-    if(tab[i] == tab[j] && tab[i] * 2 == searchingSum)
+    if(algorithmTable[i] == algorithmTable[j] && algorithmTable[i] * 2 == algorithmTable[position-1])
     {
         counter = newton(length - position, 4) * newton(countedElements, 2);
-        std::cout << tab[position-1] << " " << tab[position-1] << " " << tab[i] << " " << tab[i] << " " << tab[i] << " " << tab[i];
+        std::cout << algorithmTable[position-1] << " " << algorithmTable[position-1] << " " << algorithmTable[i] << " " << algorithmTable[i] << " " << algorithmTable[i] << " " << algorithmTable[i];
         std::cout << " the same 6 elements for " << counter << " combination."<<std::endl;
         return counter;
     }*/
 
-    while( i != j && tab[i] >= (int)(searchingSum / 2) && tab[j] <= (int)(searchingSum / 2) )
+    while( i != j && algorithmTable[i] >= (int)(algorithmTable[position-1] / 2) && algorithmTable[j] <= (int)(algorithmTable[position-1] / 2) )
     {
-        if(tab[i] + tab[j] > searchingSum)
+        if(algorithmTable[i] + algorithmTable[j] > algorithmTable[position-1])
             i++;
 
-        else if(tab[i] + tab[j] < searchingSum)
+        else if(algorithmTable[i] + algorithmTable[j] < algorithmTable[position-1])
             j--;
 
-        else //if(tab[i] + tab[j] == searchingSum )
+        else //if(algorithmTable[i] + algorithmTable[j] == algorithmTable[position-1] )
         {
             tmpi = 1;
-            while(tab[i+1] + tab[j] == searchingSum)
+            while(algorithmTable[i+1] + algorithmTable[j] == algorithmTable[position-1])
             {
                 tmpi++;
                 i++;
@@ -262,7 +260,7 @@ int searchingTwoSidesOfSquare (int tab[], int length, int position, int searchin
             if( i != j)
             {
                 tmpj = 1;
-                while(tab[i] + tab[j-1] == searchingSum)
+                while(algorithmTable[i] + algorithmTable[j-1] == algorithmTable[position-1])
                 {
                     tmpj++;
                     j--;
@@ -271,9 +269,8 @@ int searchingTwoSidesOfSquare (int tab[], int length, int position, int searchin
             }
 
             else
-            {
                 tmp = tmpi * (tmpi - 1) / 2;
-            }
+
             //tmp - ile wariantow danego typu pojawilo sie
             //tmpi - ile takich samych liczb z gory pojawilo sie
             //tmpj - ile takich samych liczb z dolu pojawilo sie
@@ -286,13 +283,11 @@ int searchingTwoSidesOfSquare (int tab[], int length, int position, int searchin
                     counter = newton(countedElements, 2) * newton(tmpi, 2) * newton(tmpj, 2);
 
                 if(counter > 0)
-                {
-                    std::cout << tab[position-1] << " " << tab[position-1] << " " << tab[i] << " " << tab[i] << " " << tab[j] << " " << tab[j] << " the same 6 elements for " << counter << " combination."<<std::endl;
-                }
+                    myFile << algorithmTable[position-1] << " " << algorithmTable[position-1] << " " << algorithmTable[i] << " " << algorithmTable[i] << " " << algorithmTable[j] << " " << algorithmTable[j] << " the same 6 elements for " << counter << " combination.\n";
 
                 combination.push_back(tmp);
-                combination.push_back(tab[i]);
-                combination.push_back(tab[j]);
+                combination.push_back(algorithmTable[i]);
+                combination.push_back(algorithmTable[j]);
                 i++;
             }
 
@@ -308,8 +303,7 @@ int searchingTwoSidesOfSquare (int tab[], int length, int position, int searchin
 
                     counterTmp = newton(countedElements, 2) * n * tmp ;
                     counter = counter + counterTmp;
-                    std::cout << tab[position-1] << " " << tab[position-1] << " " << a << " " << b << " " << tab[i] << " " << tab[j] << " the same 6 elements for " << counterTmp << " combination."<<std::endl;
-
+                    myFile << algorithmTable[position-1] << " " << algorithmTable[position-1] << " " << a << " " << b << " " << algorithmTable[i] << " " << algorithmTable[j] << " the same 6 elements for " << counterTmp << " combination.\n";
                 }
 
                 counterTmp = 0;
@@ -321,24 +315,30 @@ int searchingTwoSidesOfSquare (int tab[], int length, int position, int searchin
 
                 counter = counter + counterTmp;
                 if(counterTmp > 0)
-                    std::cout << tab[position-1] << " " << tab[position-1] << " " << tab[i] << " " << tab[i] << " " << tab[j] << " " << tab[j] << " the same 6 elements for " << counterTmp << " combination."<<std::endl;
+                    myFile << algorithmTable[position-1] << " " << algorithmTable[position-1] << " " << algorithmTable[i] << " " << algorithmTable[i] << " " << algorithmTable[j] << " " << algorithmTable[j] << " the same 6 elements for " << counterTmp << " combination.\n";
 
                 combination.push_back(tmp);
-                combination.push_back(tab[i]);
-                combination.push_back(tab[j]);
+                combination.push_back(algorithmTable[i]);
+                combination.push_back(algorithmTable[j]);
                 i++; // ewentualnie j-- mozna dodac i sprawdzic czy cos szybciej dziala
             }
         }
     }
-    combination.clear();
     return counter;
 }
 
-int searchingThreeSticks (int tab[], int length, int position)
+int Algorithm::searchingThreeSticks (int position, int countedElements, std::ofstream& myFile)
 {
-    //TODO
+    int j = length - 1;
     int counter = 0;
-	//for(int i = position)
+    int tmpi,tmpj,tmp;
+    combination.clear(); // [n, a, b]
+
+	//TODO
+	for (int i = position; i < length - 2; i++)
+    {
+
+    }
     return counter;
 }
 #endif // ALGORITHM_H_INCLUDED

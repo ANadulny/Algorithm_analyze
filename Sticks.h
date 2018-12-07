@@ -10,6 +10,7 @@ class Sticks {
 
         int getStickNumber();
         int* getStickTable();
+        int* getNewStickTable();
         void setStickNumber(int number);
         void generateStickTable();
         ~Sticks();
@@ -26,6 +27,14 @@ int Sticks::getStickNumber() {
 
 int* Sticks::getStickTable() {
     return stickTable;
+}
+
+int* Sticks::getNewStickTable() {
+    int *newStickTable = new int[stickNumber];
+    for ( int i = 0; i < stickNumber; i++ ) {
+        newStickTable[i] = stickTable[i];
+    }
+    return newStickTable;
 }
 
 void Sticks::setStickNumber(int number)
@@ -47,6 +56,7 @@ void Sticks::generateStickTable ()
 
 Sticks::~Sticks(){
     delete []stickTable;
+    stickTable = nullptr;
 }
 
 
