@@ -99,7 +99,6 @@ int Algorithm::AlgorithmNaive( std::ofstream& myFile)
                                     myFile << tab[i] << " ";
 
                                 myFile << "\n";
-                                //myFile << "MAx elem: " << max_elem << "   Counting: " << counting << "   Sum: " << sum << "\n";
                             }
 
                             else if (counting == 2 && sum == (max_elem * 4)) // the largest 2 sticks have the same number
@@ -124,7 +123,6 @@ int Algorithm::AlgorithmNaive( std::ofstream& myFile)
                                             myFile << tab[i] << " ";
 
                                         myFile << "\n";
-                                        //myFile << "MAx elem: " << max_elem << "   Counting: " << counting << "   Sum: " << sum << "\n";
                                         break;
                                     }
                                 }
@@ -254,7 +252,8 @@ int Algorithm::searchingTwoSidesOfSquare ( int position, int countedElements, st
         else //if(algorithmTable[i] + algorithmTable[j] == algorithmTable[position-1] )
         {
             tmpi = 1;
-            while(algorithmTable[i+1] + algorithmTable[j] == algorithmTable[position-1])
+            //TODO
+            while(algorithmTable[i+1] + algorithmTable[j] == algorithmTable[position-1]) //mozliwe ze trzeba zabezpieczyc przed czytaniem z miejsca poza tablica
             {
                 tmpi++;
                 i++;
@@ -263,7 +262,8 @@ int Algorithm::searchingTwoSidesOfSquare ( int position, int countedElements, st
             if( i != j)
             {
                 tmpj = 1;
-                while(algorithmTable[i] + algorithmTable[j-1] == algorithmTable[position-1])
+                //TODO
+                while(algorithmTable[i] + algorithmTable[j-1] == algorithmTable[position-1]) //mozliwe ze trzeba zabezpieczyc przed czytaniem z miejsca poza tablica
                 {
                     tmpj++;
                     j--;
@@ -330,16 +330,15 @@ int Algorithm::searchingThreeSticks (int position, int countedElements, std::ofs
 {
     int counter = 0;
     int tmpk, tmpj, tmpi;
-    combination.clear(); // [n, a, b]
     int counterTmp;
 
-    //------------------TODO-------------------------//
 	for (int i = position; i < length - 2; i++)
     {
-        int searchingSum = algorithmTable[position-1] - algorithmTable[position];
+        int searchingSum = algorithmTable[position-1] - algorithmTable[i];
 
         tmpi = 1;
-        while(algorithmTable[i] == algorithmTable[i+1])
+        //TODO
+        while(algorithmTable[i] == algorithmTable[i+1]) //trzeba zabezpieczyc przed czytaniem z miejsca poza tablica
         {
             tmpi++;
             i++;
@@ -359,14 +358,14 @@ int Algorithm::searchingThreeSticks (int position, int countedElements, std::ofs
             {
                 tmpk = 1;
                 tmpj = 1;
-
-                while(algorithmTable[k] == algorithmTable[k+1])
+                //TODO
+                while(algorithmTable[k] == algorithmTable[k+1]) //trzeba zabezpieczyc przed czytaniem z miejsca poza tablica
                 {
                     tmpk++;
                     k++;
                 }
-
-                while(algorithmTable[j-1] == algorithmTable[j])
+                //TODO
+                while(algorithmTable[j-1] == algorithmTable[j]) //trzeba zabezpieczyc przed czytaniem z miejsca poza tablica
                 {
                     j--;
                     tmpj++;
@@ -377,14 +376,14 @@ int Algorithm::searchingThreeSticks (int position, int countedElements, std::ofs
                 {
                     if(algorithmTable[i] == algorithmTable[j] )
                     {
-                        counterTmp = newton(countedElements, 3) * newton(tmpk, 3);
+                        counterTmp = newton(countedElements, 3) * newton(tmpi, 3);
                         counter += counterTmp;
                         myFile << algorithmTable[position-1] << " " << algorithmTable[position-1] << " " << algorithmTable[position-1] << " " << algorithmTable[i] << " " << algorithmTable[i] << " " << algorithmTable[i] << " the same 6 elements for " << counterTmp << " combination.\n";
                     }
 
                     else
                     {
-                        counterTmp = newton(countedElements, 3) * newton(tmpk, 2) * tmpj;
+                        counterTmp = newton(countedElements, 3) * newton(tmpi, 2) * tmpj;
                         counter += counterTmp;
                         myFile << algorithmTable[position-1] << " " << algorithmTable[position-1] << " " << algorithmTable[position-1] << " " << algorithmTable[i] << " " << algorithmTable[i] << " " << algorithmTable[j] << " the same 6 elements for " << counterTmp << " combination.\n";
                     }
@@ -392,15 +391,22 @@ int Algorithm::searchingThreeSticks (int position, int countedElements, std::ofs
 
                 else //algorithmTable[i] != algorithmTable[k]
                 {
-                    counterTmp = newton(countedElements, 3) * tmpi * tmpj * tmpk;
-                    counter += counterTmp;
-                    myFile << algorithmTable[position-1] << " " << algorithmTable[position-1] << " " << algorithmTable[position-1] << " " << algorithmTable[i] << " " << algorithmTable[k] << " " << algorithmTable[j] << " the same 6 elements for " << counterTmp << " combination.\n";
+                    if(algorithmTable[k] == algorithmTable[j] && tmpk > 1)
+                    {
+                        counterTmp = newton(countedElements, 3) * tmpi * newton(tmpk, 2);
+                        counter += counterTmp;
+                        myFile << algorithmTable[position-1] << " " << algorithmTable[position-1] << " " << algorithmTable[position-1] << " " << algorithmTable[i] << " " << algorithmTable[k] << " " << algorithmTable[j] << " the same 6 elements for " << counterTmp << " combination.\n";
+                    }
+                    else if(algorithmTable[k] != algorithmTable[j])
+                    {
+                        counterTmp = newton(countedElements, 3) * tmpi * tmpj * tmpk;
+                        counter += counterTmp;
+                        myFile << algorithmTable[position-1] << " " << algorithmTable[position-1] << " " << algorithmTable[position-1] << " " << algorithmTable[i] << " " << algorithmTable[k] << " " << algorithmTable[j] << " the same 6 elements for " << counterTmp << " combination.\n";
+                    }
                 }
             k++;
             }
-
         }
-
     }
     return counter;
 }
