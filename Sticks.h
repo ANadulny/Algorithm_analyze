@@ -1,3 +1,8 @@
+/*
+@title Zadanie 9: Znajdowanie i zliczanie kombinacji takich 6 elementow (z tablicy S elementowej liczb naturalnych mniejszych badz rownych S) za pomocą ktorych mozna zbudowac kwadrat.
+@author Adrian Nadulny
+index: 283706
+*/
 #ifndef STICKS_H_INCLUDED
 #define STICKS_H_INCLUDED
 class Sticks {
@@ -31,33 +36,30 @@ int* Sticks::getStickTable() {
 
 int* Sticks::getNewStickTable() {
     int *newStickTable = new int[stickNumber];
-    for ( int i = 0; i < stickNumber; i++ ) {
+    for( int i = 0; i < stickNumber; i++ ) {
         newStickTable[i] = stickTable[i];
     }
     return newStickTable;
 }
 
-void Sticks::setStickNumber(int number)
-{
+void Sticks::setStickNumber(int number) {
     this->stickNumber = number;
     delete []stickTable;
     stickTable = new int[number];
     generateStickTable();
 }
 
-void Sticks::generateStickTable ()
-{
+void Sticks::generateStickTable () {
     srand(time(NULL));
-    for ( int i = 0; i < stickNumber; i++ ) {
+    for( int i = 0; i < stickNumber; i++ ) {
         stickTable[i] = rand() % stickNumber + 1;
     }
 }
 
 
-Sticks::~Sticks(){
+Sticks::~Sticks() {
     delete []stickTable;
     stickTable = nullptr;
 }
-
 
 #endif // STICKS_H_INCLUDED
