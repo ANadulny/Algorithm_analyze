@@ -56,7 +56,6 @@ void Sticks::generateStickTable () {
     }
 }
 
-
 Sticks::~Sticks() {
     delete []stickTable;
     stickTable = nullptr;

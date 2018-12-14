@@ -20,7 +20,8 @@ void changeSticksNumber(Sticks &sticks);
 void generateStickTableElements(Sticks &sticks);
 void showStickTableElements(Sticks &sticks);
 void generateOwnStickTableElements(Sticks &sticks);
-void algorithmsTimeMeasure(Sticks &sticks);
+void viewAlgorithmsTimeMeasure(Sticks &sticks);
+void algorithmsTimeMeasure(Algorithm &algorithm, string fileName, int p);
 
 int main() {
     UI();
@@ -63,7 +64,7 @@ void UI() {
                 generateOwnStickTableElements(sticks);
                 break;
             case 4:
-                algorithmsTimeMeasure(sticks);
+                viewAlgorithmsTimeMeasure(sticks);
                 break;
             case 5:
                 showStickTableElements(sticks);
@@ -135,56 +136,50 @@ void generateOwnStickTableElements(Sticks &sticks) {
     }
 }
 
-void algorithmsTimeMeasure(Sticks &sticks) {
+void viewAlgorithmsTimeMeasure(Sticks &sticks) {
     system("clear");
-    int squaresNumber;
     Algorithm algorithm(sticks);
 
-    cout<<"[1] NaiveAlgorithm"<<endl;
+    cout << "[1] NaiveAlgorithm" << endl;
+    string naiveAlgorithmFile = "naiveAlgorithm.txt";
+    algorithmsTimeMeasure(algorithm, naiveAlgorithmFile, 1);
 
-    ofstream naiveAlgorithmFile;
-    naiveAlgorithmFile.open("naiveAlgorithm.txt");
-    naiveAlgorithmFile << "Naive Algorithm:\n";
-    naiveAlgorithmFile << "===========================================\n";
+	cout << "[2] AlgorithmMyHeuristic" << endl;
+    string myHeuristicAlgorithmFile = "myHeuristicAlgorithm.txt";
+    algorithmsTimeMeasure(algorithm, myHeuristicAlgorithmFile, 2);
 
+    string goBack;
+    cout << "\nPress key to go back to main panel." << endl;
+    cin >> goBack;
+}
+
+void algorithmsTimeMeasure(Algorithm &algorithm, string fileName, int p) {
+    int squaresNumber;
+    ofstream myFile;
+    myFile.open(fileName);
+
+    if(p == 1)
+        myFile << "Naive Algorithm:\n";
+    else
+        myFile << "My Heuristic Algorithm:\n";
+
+    myFile << "===========================================\n";
     cout << "===========================================" << endl;
     std::chrono::time_point<std::chrono::system_clock> start = std::chrono::system_clock::now();
-    squaresNumber = algorithm.AlgorithmNaive( naiveAlgorithmFile );
+
+    if(p == 1)
+        squaresNumber = algorithm.AlgorithmNaive( myFile );
+    else
+        squaresNumber = algorithm.AlgorithmMyHeuristic( myFile );
+
     cout << squaresNumber << ": Squares number" << endl;
     std::chrono::time_point<std::chrono::system_clock> end = std::chrono::system_clock::now();
     std::chrono::duration<double> elapsed_seconds = end - start;
     cout << "===========================================" << endl;
     cout << "Algorithm time: " << elapsed_seconds.count() << endl;
-
-    naiveAlgorithmFile << "Squares number: " << squaresNumber << "\n";
-    naiveAlgorithmFile << "===========================================\n";
-    naiveAlgorithmFile << "Algorithm time: " << elapsed_seconds.count() << "\n";
-    naiveAlgorithmFile.close();
-
     cout << endl;
-
-	cout<<"[2] AlgorithmMyHeuristic" <<endl;
-
-    ofstream myHeuristicAlgorithmFile;
-    myHeuristicAlgorithmFile.open("myHeuristicAlgorithm.txt");
-    myHeuristicAlgorithmFile << "My Heuristic Algorithm:\n";
-    myHeuristicAlgorithmFile << "===========================================\n";
-
-	cout << "===========================================" << endl;
-    start = std::chrono::system_clock::now();
-    squaresNumber = algorithm.AlgorithmMyHeuristic( myHeuristicAlgorithmFile );
-    cout << squaresNumber << ": Squares number" << endl;
-    end = std::chrono::system_clock::now();
-    elapsed_seconds = end - start;
-    cout << "===========================================" << endl;
-    cout << "Algorithm time: " << elapsed_seconds.count() << endl;
-
-    myHeuristicAlgorithmFile << "Squares number: " << squaresNumber << "\n";
-    myHeuristicAlgorithmFile << "===========================================\n";
-    myHeuristicAlgorithmFile << "Algorithm time: " << elapsed_seconds.count() << "\n";
-    myHeuristicAlgorithmFile.close();
-
-    string goBack;
-    cout << "\nPress key to go back to main panel."<<endl;
-    cin >> goBack;
+    myFile << "Squares number: " << squaresNumber << "\n";
+    myFile << "===========================================\n";
+    myFile << "Algorithm time: " << elapsed_seconds.count() << "\n";
+    myFile.close();
 }

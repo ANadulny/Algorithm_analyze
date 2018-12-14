@@ -122,10 +122,6 @@ int Algorithm::AlgorithmNaive( std::ofstream &myFile) {
     return counter;
 }
 
-int searchingTwoSidesOfSquare ( int position, int countedElements, std::ofstream &myFile);
-int searchingThreeSticks (int position);
-int newton(int n, int k);
-
 int Algorithm::AlgorithmMyHeuristic( std::ofstream &myFile) {
     quicksort(algorithmTable, 0, length-1);
 
