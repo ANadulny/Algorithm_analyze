@@ -5,58 +5,68 @@ index: 283706
 */
 #ifndef STICKS_H_INCLUDED
 #define STICKS_H_INCLUDED
-class Sticks {
+class Sticks
+{
 
-        int stickNumber; //unsigned
-        int *stickTable;
+    int stickNumber; //unsigned
+    int *stickTable;
 
-    public:
-        Sticks(int number);
+public:
+    Sticks(int number);
 
-        int getStickNumber();
-        int* getStickTable();
-        int* getNewStickTable();
-        void setStickNumber(int number);
-        void generateStickTable();
-        ~Sticks();
+    int getStickNumber();
+    int* getStickTable();
+    int* getNewStickTable();
+    void setStickNumber(int number);
+    void generateStickTable();
+    ~Sticks();
 };
 
-Sticks::Sticks(int number) {
+Sticks::Sticks(int number)
+{
     stickNumber = number;
     stickTable = new int[number];
 }
 
-int Sticks::getStickNumber() {
+int Sticks::getStickNumber()
+{
     return stickNumber;
 }
 
-int* Sticks::getStickTable() {
+int* Sticks::getStickTable()
+{
     return stickTable;
 }
 
-int* Sticks::getNewStickTable() {
+int* Sticks::getNewStickTable()
+{
     int *newStickTable = new int[stickNumber];
-    for( int i = 0; i < stickNumber; i++ ) {
+    for( int i = 0; i < stickNumber; i++ )
+    {
         newStickTable[i] = stickTable[i];
     }
     return newStickTable;
 }
 
-void Sticks::setStickNumber(int number) {
+void Sticks::setStickNumber(int number)
+{
     this->stickNumber = number;
     delete []stickTable;
     stickTable = new int[number];
     generateStickTable();
 }
 
-void Sticks::generateStickTable () {
+void Sticks::generateStickTable ()
+{
     srand(time(NULL));
-    for( int i = 0; i < stickNumber; i++ ) {
+    for( int i = 0; i < stickNumber; i++ )
+    {
         stickTable[i] = rand() % stickNumber + 1;
     }
 }
 
-Sticks::~Sticks() {
+Sticks::~Sticks()
+{
     delete []stickTable;
     stickTable = nullptr;
 }

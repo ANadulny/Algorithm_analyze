@@ -26,11 +26,7 @@ Wybór 4 pozostałych liczb: Wyszukiwanie wszystkich możliwych wariantów zsumo
 
 Wybór 3 pozostałych liczb: Wstępnie w zbiorze 6 elementów mamy już 3 powtarzające się liczby. Czwartym elementem tego zbioru będzie liczba następna w liście różne od liczby dla które wyznaczamy dany wariant. Wtedy potrzebujemy już tylko 2 elementów zbioru z którego można zbudować kwadrat. Takie 2 liczby będzie można wybrać korzystając z części wariantu wcześniejszego dla szukania pary liczb dających tym razem sumę pomniejszonej największej liczby zbioru 6 elementowego o czwarty element, który do tego zbioru dodaliśmy. 
 
-Testy algorytmu zamierzam wykonać za pomocą biblioteki boost/test/unit_test.hpp.
-
 Pomiarów czasów działania algorytmów zamierzam dokonać przy pomocy biblioteki chrono.
-
-Projekt będzie budowany przy pomocy programu make. Podczas kompilowania programu od razu będą sprawdzane testy jednostkowe z biblioteki boost/test/unit_test.hpp.
 
 ## Metody do zaimplementowania w projekcie:
 
@@ -40,25 +36,14 @@ Projekt będzie budowany przy pomocy programu make. Podczas kompilowania program
 
 Metoda odpowiedzialna za poprawne działanie algorytmu naiwnego na podstawie powyższej koncepcji.
 
-- int AlgorithmMyHeuristic (int table[], int length)		[n^3 + n^2 + n + n*logn]
+- int AlgorithmMyHeuristic (int table[], int length)		[n^3]
 
-Metoda odpowiedzialna za poprawne działanie algorytmu heurystyki, którą opisałem we wcześniejszym punkcie dokumentacji. Dana metoda będzie wywoływała na początku swojego działania jedną z metod sortowania tablicy. Przetestuję za pomocą testów jednostkowych, który algorytm sortowania szybciej będzie działał dla wejściowych tablic o dużej liczbie powtarzalnych elementów i wybiorę najszybciej działający algorytm,  żeby czas wykonywania metody AlgorithmMyHeuristic był jak najkrótszy.  Skorzystam tutaj z następujących metod do przetestowania:
+Metoda odpowiedzialna za poprawne działanie algorytmu heurystyki, którą opisałem we wcześniejszym punkcie dokumentacji. Dana metoda będzie wywoływała na początku swojego działania metodę sortowania tablicy. Skorzystam tutaj z następujących metod do przetestowania:
 
 - void quicksort(int tablica[], int p, int r)	[ n * log2 n]
 
 Dla algorytmu sortowania quicksort. 
 http://www.algorytm.org/algorytmy-sortowania/sortowanie-szybkie-quicksort/quick-1-c.html
-
-- void merge(int tab[], int start, int srodek, int end)
-- void merge_sort(int tab[], int start, int end)  		[n * log2 n]
-
-Dla algorytmu mergesort.
-http://www.algorytm.org/algorytmy-sortowania/sortowanie-przez-scalanie-mergesort/merge-1-c.html
-
-- void bubblesort(int *tab, int rozmiar)		[n^2]
-
-Dla algorytmu sortowania bąbelkowego.
-http://www.algorytm.org/algorytmy-sortowania/sortowanie-babelkowe-bubblesort/bubble-1-c.html
 
 - int searchingTwoSidesOfSquare (int tab[], int length, int position, int searchingSum)	[n+1]
 
