@@ -1,0 +1,115 @@
+Current S value: 20
+Write correct number:
+[1] Change sticks number S:
+[2] Generate random value for sticks table.
+[3] Generate own stick table.
+[4] Measure time of algorithms.
+[5] Show elements from stick table.
+[6] End program
+4
+
+
+[1] NaiveAlgorithm
+===========================================
+60: Squares number
+===========================================
+Algorithm time: 0.107443
+
+[2] AlgorithmMyHeuristic
+===========================================
+==4323== Invalid read of size 4
+==4323==    at 0x402A72: Algorithm::searchingThreeSticks(int, int, std::basic_ofstream<char, std::char_traits<char> >&) (Algorithm.h:363)
+==4323==    by 0x401D7B: Algorithm::AlgorithmMyHeuristic(std::basic_ofstream<char, std::char_traits<char> >&) (Algorithm.h:168)
+==4323==    by 0x403AD8: algorithmsTimeMeasure(Sticks&) (main.cpp:188)
+==4323==    by 0x4032C6: UI() (main.cpp:66)
+==4323==    by 0x4031B3: main (main.cpp:22)
+==4323==  Address 0x5abbf50 is 0 bytes after a block of size 80 alloc'd
+==4323==    at 0x4C2E80F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4323==    by 0x401584: Sticks::getNewStickTable() (Sticks.h:33)
+==4323==    by 0x401738: Algorithm::Algorithm(Sticks&) (Algorithm.h:31)
+==4323==    by 0x4037E2: algorithmsTimeMeasure(Sticks&) (main.cpp:154)
+==4323==    by 0x4032C6: UI() (main.cpp:66)
+==4323==    by 0x4031B3: main (main.cpp:22)
+==4323== 
+==4323== Invalid read of size 4
+==4323==    at 0x402977: Algorithm::searchingThreeSticks(int, int, std::basic_ofstream<char, std::char_traits<char> >&) (Algorithm.h:350)
+==4323==    by 0x401D7B: Algorithm::AlgorithmMyHeuristic(std::basic_ofstream<char, std::char_traits<char> >&) (Algorithm.h:168)
+==4323==    by 0x403AD8: algorithmsTimeMeasure(Sticks&) (main.cpp:188)
+==4323==    by 0x4032C6: UI() (main.cpp:66)
+==4323==    by 0x4031B3: main (main.cpp:22)
+==4323==  Address 0x5abbf50 is 0 bytes after a block of size 80 alloc'd
+==4323==    at 0x4C2E80F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4323==    by 0x401584: Sticks::getNewStickTable() (Sticks.h:33)
+==4323==    by 0x401738: Algorithm::Algorithm(Sticks&) (Algorithm.h:31)
+==4323==    by 0x4037E2: algorithmsTimeMeasure(Sticks&) (main.cpp:154)
+==4323==    by 0x4032C6: UI() (main.cpp:66)
+==4323==    by 0x4031B3: main (main.cpp:22)
+==4323== 
+60: Squares number
+===========================================
+Algorithm time: 0.0131901
+
+Press key to go back to main panel.
+^C==4323== 
+==4323== Process terminating with default action of signal 2 (SIGINT)
+==4323==    at 0x54C9260: __read_nocancel (syscall-template.S:84)
+==4323==    by 0x544C5E7: _IO_file_underflow@@GLIBC_2.2.5 (fileops.c:592)
+==4323==    by 0x544D60D: _IO_default_uflow (genops.c:413)
+==4323==    by 0x5448107: getc (getc.c:38)
+==4323==    by 0x4F23B4C: __gnu_cxx::stdio_sync_filebuf<char, std::char_traits<char> >::underflow() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==4323==    by 0x4F30B20: std::istream::sentry::sentry(std::istream&, bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==4323==    by 0x4EE0492: std::basic_istream<char, std::char_traits<char> >& std::operator>><char, std::char_traits<char>, std::allocator<char> >(std::basic_istream<char, std::char_traits<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==4323==    by 0x403C9C: algorithmsTimeMeasure(Sticks&) (main.cpp:202)
+==4323==    by 0x4032C6: UI() (main.cpp:66)
+==4323==    by 0x4031B3: main (main.cpp:22)
+==4323== 
+==4323== HEAP SUMMARY:
+==4323==     in use at exit: 72,928 bytes in 4 blocks
+==4323==   total heap usage: 26 allocs, 22 frees, 110,504 bytes allocated
+==4323== 
+==4323== 64 bytes in 1 blocks are still reachable in loss record 1 of 4
+==4323==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4323==    by 0x404AA9: __gnu_cxx::new_allocator<int>::allocate(unsigned long, void const*) (new_allocator.h:104)
+==4323==    by 0x404986: std::allocator_traits<std::allocator<int> >::allocate(std::allocator<int>&, unsigned long) (alloc_traits.h:491)
+==4323==    by 0x404829: std::_Vector_base<int, std::allocator<int> >::_M_allocate(unsigned long) (stl_vector.h:170)
+==4323==    by 0x404441: void std::vector<int, std::allocator<int> >::_M_emplace_back_aux<int const&>(int const&) (vector.tcc:412)
+==4323==    by 0x404188: std::vector<int, std::allocator<int> >::push_back(int const&) (stl_vector.h:923)
+==4323==    by 0x402843: Algorithm::searchingTwoSidesOfSquare(int, int, std::basic_ofstream<char, std::char_traits<char> >&) (Algorithm.h:321)
+==4323==    by 0x401D5C: Algorithm::AlgorithmMyHeuristic(std::basic_ofstream<char, std::char_traits<char> >&) (Algorithm.h:165)
+==4323==    by 0x403AD8: algorithmsTimeMeasure(Sticks&) (main.cpp:188)
+==4323==    by 0x4032C6: UI() (main.cpp:66)
+==4323==    by 0x4031B3: main (main.cpp:22)
+==4323== 
+==4323== 80 bytes in 1 blocks are still reachable in loss record 2 of 4
+==4323==    at 0x4C2E80F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4323==    by 0x401584: Sticks::getNewStickTable() (Sticks.h:33)
+==4323==    by 0x401738: Algorithm::Algorithm(Sticks&) (Algorithm.h:31)
+==4323==    by 0x4037E2: algorithmsTimeMeasure(Sticks&) (main.cpp:154)
+==4323==    by 0x4032C6: UI() (main.cpp:66)
+==4323==    by 0x4031B3: main (main.cpp:22)
+==4323== 
+==4323== 80 bytes in 1 blocks are still reachable in loss record 3 of 4
+==4323==    at 0x4C2E80F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4323==    by 0x401637: Sticks::setStickNumber(int) (Sticks.h:44)
+==4323==    by 0x4034F5: changeStick(Sticks&) (main.cpp:109)
+==4323==    by 0x40329C: UI() (main.cpp:57)
+==4323==    by 0x4031B3: main (main.cpp:22)
+==4323== 
+==4323== 72,704 bytes in 1 blocks are still reachable in loss record 4 of 4
+==4323==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4323==    by 0x4EC3EFF: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==4323==    by 0x40106B9: call_init.part.0 (dl-init.c:72)
+==4323==    by 0x40107CA: call_init (dl-init.c:30)
+==4323==    by 0x40107CA: _dl_init (dl-init.c:120)
+==4323==    by 0x4000C69: ??? (in /lib/x86_64-linux-gnu/ld-2.23.so)
+==4323== 
+==4323== LEAK SUMMARY:
+==4323==    definitely lost: 0 bytes in 0 blocks
+==4323==    indirectly lost: 0 bytes in 0 blocks
+==4323==      possibly lost: 0 bytes in 0 blocks
+==4323==    still reachable: 72,928 bytes in 4 blocks
+==4323==         suppressed: 0 bytes in 0 blocks
+==4323== 
+==4323== For counts of detected and suppressed errors, rerun with: -v
+==4323== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+

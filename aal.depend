@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1545068003 source:/home/adrian/Desktop/aal/aal/main.cpp
+	<iostream>
+	<chrono>
+	<random>
+	<chrono>
+	<fstream>
+	<fstream>
+	<iomanip>
+	"Sticks.h"
+	"Algorithm.h"
+
+1544877932 /home/adrian/Desktop/aal/aal/Sticks.h
+
+1543252170 source:/home/adrian/Desktop/aal/aal/Algorithm.cpp
+	<iostream>
+
+1543252320 /home/adrian/Desktop/aal/aal/Algorithm.cpp
+
+1544882188 /home/adrian/Desktop/aal/aal/Algorithm.h
+	<iostream>
+	<vector>
+	<fstream>
+
