@@ -1,0 +1,674 @@
+[0]: 75 
+[1]: 75 
+[2]: 72 
+[3]: 71 
+[4]: 70 
+[5]: 69 
+[6]: 68 
+[7]: 67 
+[8]: 66 
+[9]: 65 
+[10]: 65 
+[11]: 64 
+[12]: 61 
+[13]: 61 
+[14]: 59 
+[15]: 59 
+[16]: 59 
+[17]: 58 
+[18]: 58 
+[19]: 57 
+[20]: 55 
+[21]: 54 
+[22]: 50 
+[23]: 50 
+[24]: 48 
+[25]: 44 
+[26]: 43 
+[27]: 41 
+[28]: 41 
+[29]: 41 
+[30]: 40 
+[31]: 38 
+[32]: 38 
+[33]: 38 
+[34]: 37 
+[35]: 36 
+[36]: 36 
+[37]: 36 
+[38]: 35 
+[39]: 35 
+[40]: 35 
+[41]: 35 
+[42]: 34 
+[43]: 33 
+[44]: 33 
+[45]: 32 
+[46]: 31 
+[47]: 28 
+[48]: 28 
+[49]: 28 
+[50]: 27 
+[51]: 27 
+[52]: 26 
+[53]: 26 
+[54]: 26 
+[55]: 26 
+[56]: 23 
+[57]: 22 
+[58]: 20 
+[59]: 20 
+[60]: 20 
+[61]: 18 
+[62]: 17 
+[63]: 17 
+[64]: 16 
+[65]: 12 
+[66]: 12 
+[67]: 9 
+[68]: 7 
+[69]: 5 
+[70]: 4 
+[71]: 2 
+[72]: 2 
+[73]: 1 
+[74]: 1 
+===========================================
+75 75 71 4 70 5 the same 6 elements for 1 combination.
+75 75 71 4 68 7 the same 6 elements for 1 combination.
+75 75 70 5 68 7 the same 6 elements for 1 combination.
+75 75 71 4 66 9 the same 6 elements for 1 combination.
+75 75 70 5 66 9 the same 6 elements for 1 combination.
+75 75 68 7 66 9 the same 6 elements for 1 combination.
+75 75 71 4 59 16 the same 6 elements for 3 combination.
+75 75 70 5 59 16 the same 6 elements for 3 combination.
+75 75 68 7 59 16 the same 6 elements for 3 combination.
+75 75 66 9 59 16 the same 6 elements for 3 combination.
+75 75 71 4 58 17 the same 6 elements for 4 combination.
+75 75 70 5 58 17 the same 6 elements for 4 combination.
+75 75 68 7 58 17 the same 6 elements for 4 combination.
+75 75 66 9 58 17 the same 6 elements for 4 combination.
+75 75 59 16 58 17 the same 6 elements for 12 combination.
+75 75 58 58 17 17 the same 6 elements for 1 combination.
+75 75 71 4 57 18 the same 6 elements for 1 combination.
+75 75 70 5 57 18 the same 6 elements for 1 combination.
+75 75 68 7 57 18 the same 6 elements for 1 combination.
+75 75 66 9 57 18 the same 6 elements for 1 combination.
+75 75 59 16 57 18 the same 6 elements for 3 combination.
+75 75 58 17 57 18 the same 6 elements for 4 combination.
+75 75 71 4 55 20 the same 6 elements for 3 combination.
+75 75 70 5 55 20 the same 6 elements for 3 combination.
+75 75 68 7 55 20 the same 6 elements for 3 combination.
+75 75 66 9 55 20 the same 6 elements for 3 combination.
+75 75 59 16 55 20 the same 6 elements for 9 combination.
+75 75 58 17 55 20 the same 6 elements for 12 combination.
+75 75 57 18 55 20 the same 6 elements for 3 combination.
+75 75 71 4 48 27 the same 6 elements for 2 combination.
+75 75 70 5 48 27 the same 6 elements for 2 combination.
+75 75 68 7 48 27 the same 6 elements for 2 combination.
+75 75 66 9 48 27 the same 6 elements for 2 combination.
+75 75 59 16 48 27 the same 6 elements for 6 combination.
+75 75 58 17 48 27 the same 6 elements for 8 combination.
+75 75 57 18 48 27 the same 6 elements for 2 combination.
+75 75 55 20 48 27 the same 6 elements for 6 combination.
+75 75 71 4 44 31 the same 6 elements for 1 combination.
+75 75 70 5 44 31 the same 6 elements for 1 combination.
+75 75 68 7 44 31 the same 6 elements for 1 combination.
+75 75 66 9 44 31 the same 6 elements for 1 combination.
+75 75 59 16 44 31 the same 6 elements for 3 combination.
+75 75 58 17 44 31 the same 6 elements for 4 combination.
+75 75 57 18 44 31 the same 6 elements for 1 combination.
+75 75 55 20 44 31 the same 6 elements for 3 combination.
+75 75 48 27 44 31 the same 6 elements for 2 combination.
+75 75 71 4 43 32 the same 6 elements for 1 combination.
+75 75 70 5 43 32 the same 6 elements for 1 combination.
+75 75 68 7 43 32 the same 6 elements for 1 combination.
+75 75 66 9 43 32 the same 6 elements for 1 combination.
+75 75 59 16 43 32 the same 6 elements for 3 combination.
+75 75 58 17 43 32 the same 6 elements for 4 combination.
+75 75 57 18 43 32 the same 6 elements for 1 combination.
+75 75 55 20 43 32 the same 6 elements for 3 combination.
+75 75 48 27 43 32 the same 6 elements for 2 combination.
+75 75 44 31 43 32 the same 6 elements for 1 combination.
+75 75 71 4 41 34 the same 6 elements for 3 combination.
+75 75 70 5 41 34 the same 6 elements for 3 combination.
+75 75 68 7 41 34 the same 6 elements for 3 combination.
+75 75 66 9 41 34 the same 6 elements for 3 combination.
+75 75 59 16 41 34 the same 6 elements for 9 combination.
+75 75 58 17 41 34 the same 6 elements for 12 combination.
+75 75 57 18 41 34 the same 6 elements for 3 combination.
+75 75 55 20 41 34 the same 6 elements for 9 combination.
+75 75 48 27 41 34 the same 6 elements for 6 combination.
+75 75 44 31 41 34 the same 6 elements for 3 combination.
+75 75 43 32 41 34 the same 6 elements for 3 combination.
+75 75 71 4 40 35 the same 6 elements for 4 combination.
+75 75 70 5 40 35 the same 6 elements for 4 combination.
+75 75 68 7 40 35 the same 6 elements for 4 combination.
+75 75 66 9 40 35 the same 6 elements for 4 combination.
+75 75 59 16 40 35 the same 6 elements for 12 combination.
+75 75 58 17 40 35 the same 6 elements for 16 combination.
+75 75 57 18 40 35 the same 6 elements for 4 combination.
+75 75 55 20 40 35 the same 6 elements for 12 combination.
+75 75 48 27 40 35 the same 6 elements for 8 combination.
+75 75 44 31 40 35 the same 6 elements for 4 combination.
+75 75 43 32 40 35 the same 6 elements for 4 combination.
+75 75 41 34 40 35 the same 6 elements for 12 combination.
+75 75 71 4 38 37 the same 6 elements for 3 combination.
+75 75 70 5 38 37 the same 6 elements for 3 combination.
+75 75 68 7 38 37 the same 6 elements for 3 combination.
+75 75 66 9 38 37 the same 6 elements for 3 combination.
+75 75 59 16 38 37 the same 6 elements for 9 combination.
+75 75 58 17 38 37 the same 6 elements for 12 combination.
+75 75 57 18 38 37 the same 6 elements for 3 combination.
+75 75 55 20 38 37 the same 6 elements for 9 combination.
+75 75 48 27 38 37 the same 6 elements for 6 combination.
+75 75 44 31 38 37 the same 6 elements for 3 combination.
+75 75 43 32 38 37 the same 6 elements for 3 combination.
+75 75 41 34 38 37 the same 6 elements for 9 combination.
+75 75 40 35 38 37 the same 6 elements for 12 combination.
+65 65 64 1 61 4 the same 6 elements for 4 combination.
+65 65 64 1 58 7 the same 6 elements for 4 combination.
+65 65 61 4 58 7 the same 6 elements for 4 combination.
+65 65 64 1 48 17 the same 6 elements for 4 combination.
+65 65 61 4 48 17 the same 6 elements for 4 combination.
+65 65 58 7 48 17 the same 6 elements for 4 combination.
+65 65 64 1 43 22 the same 6 elements for 2 combination.
+65 65 61 4 43 22 the same 6 elements for 2 combination.
+65 65 58 7 43 22 the same 6 elements for 2 combination.
+65 65 48 17 43 22 the same 6 elements for 2 combination.
+65 65 64 1 38 27 the same 6 elements for 12 combination.
+65 65 61 4 38 27 the same 6 elements for 12 combination.
+65 65 58 7 38 27 the same 6 elements for 12 combination.
+65 65 48 17 38 27 the same 6 elements for 12 combination.
+65 65 43 22 38 27 the same 6 elements for 6 combination.
+65 65 38 38 27 27 the same 6 elements for 3 combination.
+65 65 64 1 37 28 the same 6 elements for 6 combination.
+65 65 61 4 37 28 the same 6 elements for 6 combination.
+65 65 58 7 37 28 the same 6 elements for 6 combination.
+65 65 48 17 37 28 the same 6 elements for 6 combination.
+65 65 43 22 37 28 the same 6 elements for 3 combination.
+65 65 38 27 37 28 the same 6 elements for 18 combination.
+65 65 64 1 34 31 the same 6 elements for 2 combination.
+65 65 61 4 34 31 the same 6 elements for 2 combination.
+65 65 58 7 34 31 the same 6 elements for 2 combination.
+65 65 48 17 34 31 the same 6 elements for 2 combination.
+65 65 43 22 34 31 the same 6 elements for 1 combination.
+65 65 38 27 34 31 the same 6 elements for 6 combination.
+65 65 37 28 34 31 the same 6 elements for 3 combination.
+65 65 64 1 33 32 the same 6 elements for 4 combination.
+65 65 61 4 33 32 the same 6 elements for 4 combination.
+65 65 58 7 33 32 the same 6 elements for 4 combination.
+65 65 48 17 33 32 the same 6 elements for 4 combination.
+65 65 43 22 33 32 the same 6 elements for 2 combination.
+65 65 38 27 33 32 the same 6 elements for 12 combination.
+65 65 37 28 33 32 the same 6 elements for 6 combination.
+65 65 34 31 33 32 the same 6 elements for 2 combination.
+61 61 59 59 2 2 the same 6 elements for 3 combination.
+61 61 59 2 57 4 the same 6 elements for 6 combination.
+61 61 59 2 54 7 the same 6 elements for 6 combination.
+61 61 57 4 54 7 the same 6 elements for 1 combination.
+61 61 59 2 44 17 the same 6 elements for 12 combination.
+61 61 57 4 44 17 the same 6 elements for 2 combination.
+61 61 54 7 44 17 the same 6 elements for 2 combination.
+61 61 59 2 43 18 the same 6 elements for 6 combination.
+61 61 57 4 43 18 the same 6 elements for 1 combination.
+61 61 54 7 43 18 the same 6 elements for 1 combination.
+61 61 44 17 43 18 the same 6 elements for 2 combination.
+61 61 59 2 41 20 the same 6 elements for 54 combination.
+61 61 57 4 41 20 the same 6 elements for 9 combination.
+61 61 54 7 41 20 the same 6 elements for 9 combination.
+61 61 44 17 41 20 the same 6 elements for 18 combination.
+61 61 43 18 41 20 the same 6 elements for 9 combination.
+61 61 41 41 20 20 the same 6 elements for 9 combination.
+61 61 59 2 38 23 the same 6 elements for 18 combination.
+61 61 57 4 38 23 the same 6 elements for 3 combination.
+61 61 54 7 38 23 the same 6 elements for 3 combination.
+61 61 44 17 38 23 the same 6 elements for 6 combination.
+61 61 43 18 38 23 the same 6 elements for 3 combination.
+61 61 41 20 38 23 the same 6 elements for 27 combination.
+61 61 59 2 35 26 the same 6 elements for 96 combination.
+61 61 57 4 35 26 the same 6 elements for 16 combination.
+61 61 54 7 35 26 the same 6 elements for 16 combination.
+61 61 44 17 35 26 the same 6 elements for 32 combination.
+61 61 43 18 35 26 the same 6 elements for 16 combination.
+61 61 41 20 35 26 the same 6 elements for 144 combination.
+61 61 38 23 35 26 the same 6 elements for 48 combination.
+61 61 35 35 26 26 the same 6 elements for 36 combination.
+61 61 59 2 34 27 the same 6 elements for 12 combination.
+61 61 57 4 34 27 the same 6 elements for 2 combination.
+61 61 54 7 34 27 the same 6 elements for 2 combination.
+61 61 44 17 34 27 the same 6 elements for 4 combination.
+61 61 43 18 34 27 the same 6 elements for 2 combination.
+61 61 41 20 34 27 the same 6 elements for 18 combination.
+61 61 38 23 34 27 the same 6 elements for 6 combination.
+61 61 35 26 34 27 the same 6 elements for 32 combination.
+61 61 59 2 33 28 the same 6 elements for 36 combination.
+61 61 57 4 33 28 the same 6 elements for 6 combination.
+61 61 54 7 33 28 the same 6 elements for 6 combination.
+61 61 44 17 33 28 the same 6 elements for 12 combination.
+61 61 43 18 33 28 the same 6 elements for 6 combination.
+61 61 41 20 33 28 the same 6 elements for 54 combination.
+61 61 38 23 33 28 the same 6 elements for 18 combination.
+61 61 35 26 33 28 the same 6 elements for 96 combination.
+61 61 34 27 33 28 the same 6 elements for 12 combination.
+61 61 33 33 28 28 the same 6 elements for 3 combination.
+59 59 58 58 1 1 the same 6 elements for 3 combination.
+59 59 58 1 57 2 the same 6 elements for 24 combination.
+59 59 58 1 55 4 the same 6 elements for 12 combination.
+59 59 57 2 55 4 the same 6 elements for 6 combination.
+59 59 58 1 54 5 the same 6 elements for 12 combination.
+59 59 57 2 54 5 the same 6 elements for 6 combination.
+59 59 55 4 54 5 the same 6 elements for 3 combination.
+59 59 58 1 50 9 the same 6 elements for 24 combination.
+59 59 57 2 50 9 the same 6 elements for 12 combination.
+59 59 55 4 50 9 the same 6 elements for 6 combination.
+59 59 54 5 50 9 the same 6 elements for 6 combination.
+59 59 58 1 43 16 the same 6 elements for 12 combination.
+59 59 57 2 43 16 the same 6 elements for 6 combination.
+59 59 55 4 43 16 the same 6 elements for 3 combination.
+59 59 54 5 43 16 the same 6 elements for 3 combination.
+59 59 50 9 43 16 the same 6 elements for 6 combination.
+59 59 58 1 41 18 the same 6 elements for 36 combination.
+59 59 57 2 41 18 the same 6 elements for 18 combination.
+59 59 55 4 41 18 the same 6 elements for 9 combination.
+59 59 54 5 41 18 the same 6 elements for 9 combination.
+59 59 50 9 41 18 the same 6 elements for 18 combination.
+59 59 43 16 41 18 the same 6 elements for 9 combination.
+59 59 58 1 37 22 the same 6 elements for 12 combination.
+59 59 57 2 37 22 the same 6 elements for 6 combination.
+59 59 55 4 37 22 the same 6 elements for 3 combination.
+59 59 54 5 37 22 the same 6 elements for 3 combination.
+59 59 50 9 37 22 the same 6 elements for 6 combination.
+59 59 43 16 37 22 the same 6 elements for 3 combination.
+59 59 41 18 37 22 the same 6 elements for 9 combination.
+59 59 58 1 36 23 the same 6 elements for 36 combination.
+59 59 57 2 36 23 the same 6 elements for 18 combination.
+59 59 55 4 36 23 the same 6 elements for 9 combination.
+59 59 54 5 36 23 the same 6 elements for 9 combination.
+59 59 50 9 36 23 the same 6 elements for 18 combination.
+59 59 43 16 36 23 the same 6 elements for 9 combination.
+59 59 41 18 36 23 the same 6 elements for 27 combination.
+59 59 37 22 36 23 the same 6 elements for 9 combination.
+59 59 58 1 33 26 the same 6 elements for 96 combination.
+59 59 57 2 33 26 the same 6 elements for 48 combination.
+59 59 55 4 33 26 the same 6 elements for 24 combination.
+59 59 54 5 33 26 the same 6 elements for 24 combination.
+59 59 50 9 33 26 the same 6 elements for 48 combination.
+59 59 43 16 33 26 the same 6 elements for 24 combination.
+59 59 41 18 33 26 the same 6 elements for 72 combination.
+59 59 37 22 33 26 the same 6 elements for 24 combination.
+59 59 36 23 33 26 the same 6 elements for 72 combination.
+59 59 33 33 26 26 the same 6 elements for 18 combination.
+59 59 58 1 32 27 the same 6 elements for 24 combination.
+59 59 57 2 32 27 the same 6 elements for 12 combination.
+59 59 55 4 32 27 the same 6 elements for 6 combination.
+59 59 54 5 32 27 the same 6 elements for 6 combination.
+59 59 50 9 32 27 the same 6 elements for 12 combination.
+59 59 43 16 32 27 the same 6 elements for 6 combination.
+59 59 41 18 32 27 the same 6 elements for 18 combination.
+59 59 37 22 32 27 the same 6 elements for 6 combination.
+59 59 36 23 32 27 the same 6 elements for 18 combination.
+59 59 33 26 32 27 the same 6 elements for 48 combination.
+59 59 58 1 31 28 the same 6 elements for 36 combination.
+59 59 57 2 31 28 the same 6 elements for 18 combination.
+59 59 55 4 31 28 the same 6 elements for 9 combination.
+59 59 54 5 31 28 the same 6 elements for 9 combination.
+59 59 50 9 31 28 the same 6 elements for 18 combination.
+59 59 43 16 31 28 the same 6 elements for 9 combination.
+59 59 41 18 31 28 the same 6 elements for 27 combination.
+59 59 37 22 31 28 the same 6 elements for 9 combination.
+59 59 36 23 31 28 the same 6 elements for 27 combination.
+59 59 33 26 31 28 the same 6 elements for 72 combination.
+59 59 32 27 31 28 the same 6 elements for 18 combination.
+59 59 59 57 1 1 the same 6 elements for 1 combination.
+59 59 59 55 2 2 the same 6 elements for 1 combination.
+59 59 59 54 4 1 the same 6 elements for 2 combination.
+59 59 59 50 7 2 the same 6 elements for 4 combination.
+59 59 59 50 5 4 the same 6 elements for 2 combination.
+59 59 59 48 9 2 the same 6 elements for 2 combination.
+59 59 59 48 7 4 the same 6 elements for 1 combination.
+59 59 59 43 12 4 the same 6 elements for 2 combination.
+59 59 59 43 9 7 the same 6 elements for 1 combination.
+59 59 59 41 17 1 the same 6 elements for 12 combination.
+59 59 59 41 16 2 the same 6 elements for 6 combination.
+59 59 59 40 18 1 the same 6 elements for 2 combination.
+59 59 59 40 17 2 the same 6 elements for 4 combination.
+59 59 59 40 12 7 the same 6 elements for 2 combination.
+59 59 59 38 20 1 the same 6 elements for 18 combination.
+59 59 59 38 17 4 the same 6 elements for 6 combination.
+59 59 59 38 16 5 the same 6 elements for 3 combination.
+59 59 59 38 12 9 the same 6 elements for 6 combination.
+59 59 59 37 20 2 the same 6 elements for 6 combination.
+59 59 59 37 18 4 the same 6 elements for 1 combination.
+59 59 59 37 17 5 the same 6 elements for 2 combination.
+59 59 59 36 22 1 the same 6 elements for 6 combination.
+59 59 59 36 18 5 the same 6 elements for 3 combination.
+59 59 59 36 16 7 the same 6 elements for 3 combination.
+59 59 59 35 23 1 the same 6 elements for 8 combination.
+59 59 59 35 22 2 the same 6 elements for 8 combination.
+59 59 59 35 20 4 the same 6 elements for 12 combination.
+59 59 59 35 17 7 the same 6 elements for 8 combination.
+59 59 59 35 12 12 the same 6 elements for 4 combination.
+59 59 59 34 23 2 the same 6 elements for 2 combination.
+59 59 59 34 20 5 the same 6 elements for 3 combination.
+59 59 59 34 18 7 the same 6 elements for 1 combination.
+59 59 59 34 16 9 the same 6 elements for 1 combination.
+59 59 59 33 22 4 the same 6 elements for 2 combination.
+59 59 59 33 17 9 the same 6 elements for 4 combination.
+59 59 59 32 26 1 the same 6 elements for 8 combination.
+59 59 59 32 23 4 the same 6 elements for 1 combination.
+59 59 59 32 22 5 the same 6 elements for 1 combination.
+59 59 59 32 20 7 the same 6 elements for 3 combination.
+59 59 59 32 18 9 the same 6 elements for 1 combination.
+59 59 59 31 27 1 the same 6 elements for 4 combination.
+59 59 59 31 26 2 the same 6 elements for 8 combination.
+59 59 59 31 23 5 the same 6 elements for 1 combination.
+59 59 59 31 16 12 the same 6 elements for 2 combination.
+59 59 59 28 27 4 the same 6 elements for 6 combination.
+59 59 59 28 26 5 the same 6 elements for 12 combination.
+59 59 59 28 22 9 the same 6 elements for 3 combination.
+59 59 59 27 27 5 the same 6 elements for 1 combination.
+59 59 59 27 23 9 the same 6 elements for 2 combination.
+59 59 59 27 20 12 the same 6 elements for 12 combination.
+59 59 59 26 26 7 the same 6 elements for 6 combination.
+59 59 59 26 17 16 the same 6 elements for 8 combination.
+59 59 59 23 20 16 the same 6 elements for 3 combination.
+59 59 59 22 20 17 the same 6 elements for 6 combination.
+58 58 57 1 54 4 the same 6 elements for 2 combination.
+58 58 57 1 41 17 the same 6 elements for 12 combination.
+58 58 54 4 41 17 the same 6 elements for 6 combination.
+58 58 41 41 17 17 the same 6 elements for 3 combination.
+58 58 57 1 40 18 the same 6 elements for 2 combination.
+58 58 54 4 40 18 the same 6 elements for 1 combination.
+58 58 41 17 40 18 the same 6 elements for 6 combination.
+58 58 57 1 38 20 the same 6 elements for 18 combination.
+58 58 54 4 38 20 the same 6 elements for 9 combination.
+58 58 41 17 38 20 the same 6 elements for 54 combination.
+58 58 40 18 38 20 the same 6 elements for 9 combination.
+58 58 38 38 20 20 the same 6 elements for 9 combination.
+58 58 57 1 36 22 the same 6 elements for 6 combination.
+58 58 54 4 36 22 the same 6 elements for 3 combination.
+58 58 41 17 36 22 the same 6 elements for 18 combination.
+58 58 40 18 36 22 the same 6 elements for 3 combination.
+58 58 38 20 36 22 the same 6 elements for 27 combination.
+58 58 57 1 35 23 the same 6 elements for 8 combination.
+58 58 54 4 35 23 the same 6 elements for 4 combination.
+58 58 41 17 35 23 the same 6 elements for 24 combination.
+58 58 40 18 35 23 the same 6 elements for 4 combination.
+58 58 38 20 35 23 the same 6 elements for 36 combination.
+58 58 36 22 35 23 the same 6 elements for 12 combination.
+58 58 57 1 32 26 the same 6 elements for 8 combination.
+58 58 54 4 32 26 the same 6 elements for 4 combination.
+58 58 41 17 32 26 the same 6 elements for 24 combination.
+58 58 40 18 32 26 the same 6 elements for 4 combination.
+58 58 38 20 32 26 the same 6 elements for 36 combination.
+58 58 36 22 32 26 the same 6 elements for 12 combination.
+58 58 35 23 32 26 the same 6 elements for 16 combination.
+58 58 57 1 31 27 the same 6 elements for 4 combination.
+58 58 54 4 31 27 the same 6 elements for 2 combination.
+58 58 41 17 31 27 the same 6 elements for 12 combination.
+58 58 40 18 31 27 the same 6 elements for 2 combination.
+58 58 38 20 31 27 the same 6 elements for 18 combination.
+58 58 36 22 31 27 the same 6 elements for 6 combination.
+58 58 35 23 31 27 the same 6 elements for 8 combination.
+58 58 32 26 31 27 the same 6 elements for 8 combination.
+50 50 48 2 43 7 the same 6 elements for 2 combination.
+50 50 48 2 41 9 the same 6 elements for 6 combination.
+50 50 43 7 41 9 the same 6 elements for 3 combination.
+50 50 48 2 38 12 the same 6 elements for 12 combination.
+50 50 43 7 38 12 the same 6 elements for 6 combination.
+50 50 41 9 38 12 the same 6 elements for 18 combination.
+50 50 38 38 12 12 the same 6 elements for 3 combination.
+50 50 48 2 34 16 the same 6 elements for 2 combination.
+50 50 43 7 34 16 the same 6 elements for 1 combination.
+50 50 41 9 34 16 the same 6 elements for 3 combination.
+50 50 38 12 34 16 the same 6 elements for 6 combination.
+50 50 48 2 33 17 the same 6 elements for 8 combination.
+50 50 43 7 33 17 the same 6 elements for 4 combination.
+50 50 41 9 33 17 the same 6 elements for 12 combination.
+50 50 38 12 33 17 the same 6 elements for 24 combination.
+50 50 34 16 33 17 the same 6 elements for 4 combination.
+50 50 33 33 17 17 the same 6 elements for 1 combination.
+50 50 48 2 32 18 the same 6 elements for 2 combination.
+50 50 43 7 32 18 the same 6 elements for 1 combination.
+50 50 41 9 32 18 the same 6 elements for 3 combination.
+50 50 38 12 32 18 the same 6 elements for 6 combination.
+50 50 34 16 32 18 the same 6 elements for 1 combination.
+50 50 33 17 32 18 the same 6 elements for 4 combination.
+50 50 48 2 28 22 the same 6 elements for 6 combination.
+50 50 43 7 28 22 the same 6 elements for 3 combination.
+50 50 41 9 28 22 the same 6 elements for 9 combination.
+50 50 38 12 28 22 the same 6 elements for 18 combination.
+50 50 34 16 28 22 the same 6 elements for 3 combination.
+50 50 33 17 28 22 the same 6 elements for 12 combination.
+50 50 32 18 28 22 the same 6 elements for 3 combination.
+50 50 48 2 27 23 the same 6 elements for 4 combination.
+50 50 43 7 27 23 the same 6 elements for 2 combination.
+50 50 41 9 27 23 the same 6 elements for 6 combination.
+50 50 38 12 27 23 the same 6 elements for 12 combination.
+50 50 34 16 27 23 the same 6 elements for 2 combination.
+50 50 33 17 27 23 the same 6 elements for 8 combination.
+50 50 32 18 27 23 the same 6 elements for 2 combination.
+50 50 28 22 27 23 the same 6 elements for 6 combination.
+41 41 40 1 37 4 the same 6 elements for 6 combination.
+41 41 40 1 36 5 the same 6 elements for 18 combination.
+41 41 37 4 36 5 the same 6 elements for 9 combination.
+41 41 40 1 34 7 the same 6 elements for 6 combination.
+41 41 37 4 34 7 the same 6 elements for 3 combination.
+41 41 36 5 34 7 the same 6 elements for 9 combination.
+41 41 40 1 32 9 the same 6 elements for 6 combination.
+41 41 37 4 32 9 the same 6 elements for 3 combination.
+41 41 36 5 32 9 the same 6 elements for 9 combination.
+41 41 34 7 32 9 the same 6 elements for 3 combination.
+41 41 40 1 23 18 the same 6 elements for 6 combination.
+41 41 37 4 23 18 the same 6 elements for 3 combination.
+41 41 36 5 23 18 the same 6 elements for 9 combination.
+41 41 34 7 23 18 the same 6 elements for 3 combination.
+41 41 32 9 23 18 the same 6 elements for 3 combination.
+41 41 41 38 2 1 the same 6 elements for 12 combination.
+41 41 41 37 2 2 the same 6 elements for 1 combination.
+41 41 41 36 4 1 the same 6 elements for 6 combination.
+41 41 41 35 5 1 the same 6 elements for 8 combination.
+41 41 41 35 4 2 the same 6 elements for 8 combination.
+41 41 41 34 5 2 the same 6 elements for 2 combination.
+41 41 41 33 7 1 the same 6 elements for 4 combination.
+41 41 41 32 7 2 the same 6 elements for 2 combination.
+41 41 41 32 5 4 the same 6 elements for 1 combination.
+41 41 41 31 9 1 the same 6 elements for 2 combination.
+41 41 41 28 12 1 the same 6 elements for 12 combination.
+41 41 41 28 9 4 the same 6 elements for 3 combination.
+41 41 41 27 12 2 the same 6 elements for 8 combination.
+41 41 41 27 9 5 the same 6 elements for 2 combination.
+41 41 41 23 17 1 the same 6 elements for 4 combination.
+41 41 41 23 16 2 the same 6 elements for 2 combination.
+41 41 41 22 18 1 the same 6 elements for 2 combination.
+41 41 41 22 17 2 the same 6 elements for 4 combination.
+41 41 41 22 12 7 the same 6 elements for 2 combination.
+41 41 41 20 20 1 the same 6 elements for 6 combination.
+41 41 41 20 17 4 the same 6 elements for 6 combination.
+41 41 41 20 16 5 the same 6 elements for 3 combination.
+41 41 41 20 12 9 the same 6 elements for 6 combination.
+41 41 41 18 16 7 the same 6 elements for 1 combination.
+41 41 41 17 17 7 the same 6 elements for 1 combination.
+41 41 41 17 12 12 the same 6 elements for 2 combination.
+38 38 37 1 36 2 the same 6 elements for 36 combination.
+38 38 36 36 2 2 the same 6 elements for 9 combination.
+38 38 37 1 34 4 the same 6 elements for 6 combination.
+38 38 36 2 34 4 the same 6 elements for 18 combination.
+38 38 37 1 33 5 the same 6 elements for 12 combination.
+38 38 36 2 33 5 the same 6 elements for 36 combination.
+38 38 34 4 33 5 the same 6 elements for 6 combination.
+38 38 37 1 31 7 the same 6 elements for 6 combination.
+38 38 36 2 31 7 the same 6 elements for 18 combination.
+38 38 34 4 31 7 the same 6 elements for 3 combination.
+38 38 33 5 31 7 the same 6 elements for 6 combination.
+38 38 37 1 26 12 the same 6 elements for 48 combination.
+38 38 36 2 26 12 the same 6 elements for 144 combination.
+38 38 34 4 26 12 the same 6 elements for 24 combination.
+38 38 33 5 26 12 the same 6 elements for 48 combination.
+38 38 31 7 26 12 the same 6 elements for 24 combination.
+38 38 26 26 12 12 the same 6 elements for 18 combination.
+38 38 37 1 22 16 the same 6 elements for 6 combination.
+38 38 36 2 22 16 the same 6 elements for 18 combination.
+38 38 34 4 22 16 the same 6 elements for 3 combination.
+38 38 33 5 22 16 the same 6 elements for 6 combination.
+38 38 31 7 22 16 the same 6 elements for 3 combination.
+38 38 26 12 22 16 the same 6 elements for 24 combination.
+38 38 37 1 20 18 the same 6 elements for 18 combination.
+38 38 36 2 20 18 the same 6 elements for 54 combination.
+38 38 34 4 20 18 the same 6 elements for 9 combination.
+38 38 33 5 20 18 the same 6 elements for 18 combination.
+38 38 31 7 20 18 the same 6 elements for 9 combination.
+38 38 26 12 20 18 the same 6 elements for 72 combination.
+38 38 22 16 20 18 the same 6 elements for 9 combination.
+38 38 38 36 1 1 the same 6 elements for 3 combination.
+38 38 38 35 2 1 the same 6 elements for 16 combination.
+38 38 38 34 2 2 the same 6 elements for 1 combination.
+38 38 38 33 4 1 the same 6 elements for 4 combination.
+38 38 38 32 5 1 the same 6 elements for 2 combination.
+38 38 38 32 4 2 the same 6 elements for 2 combination.
+38 38 38 31 5 2 the same 6 elements for 2 combination.
+38 38 38 28 9 1 the same 6 elements for 6 combination.
+38 38 38 27 9 2 the same 6 elements for 4 combination.
+38 38 38 27 7 4 the same 6 elements for 2 combination.
+38 38 38 26 7 5 the same 6 elements for 4 combination.
+38 38 38 22 12 4 the same 6 elements for 2 combination.
+38 38 38 22 9 7 the same 6 elements for 1 combination.
+38 38 38 20 17 1 the same 6 elements for 12 combination.
+38 38 38 20 16 2 the same 6 elements for 6 combination.
+38 38 38 18 16 4 the same 6 elements for 1 combination.
+38 38 38 17 17 4 the same 6 elements for 1 combination.
+38 38 38 17 16 5 the same 6 elements for 2 combination.
+38 38 38 17 12 9 the same 6 elements for 4 combination.
+36 36 35 35 1 1 the same 6 elements for 18 combination.
+36 36 35 1 34 2 the same 6 elements for 48 combination.
+36 36 35 1 32 4 the same 6 elements for 24 combination.
+36 36 34 2 32 4 the same 6 elements for 6 combination.
+36 36 35 1 31 5 the same 6 elements for 24 combination.
+36 36 34 2 31 5 the same 6 elements for 6 combination.
+36 36 32 4 31 5 the same 6 elements for 3 combination.
+36 36 35 1 27 9 the same 6 elements for 48 combination.
+36 36 34 2 27 9 the same 6 elements for 12 combination.
+36 36 32 4 27 9 the same 6 elements for 6 combination.
+36 36 31 5 27 9 the same 6 elements for 6 combination.
+36 36 35 1 20 16 the same 6 elements for 72 combination.
+36 36 34 2 20 16 the same 6 elements for 18 combination.
+36 36 32 4 20 16 the same 6 elements for 9 combination.
+36 36 31 5 20 16 the same 6 elements for 9 combination.
+36 36 27 9 20 16 the same 6 elements for 18 combination.
+36 36 36 34 1 1 the same 6 elements for 1 combination.
+36 36 36 33 2 1 the same 6 elements for 8 combination.
+36 36 36 32 2 2 the same 6 elements for 1 combination.
+36 36 36 31 4 1 the same 6 elements for 2 combination.
+36 36 36 28 7 1 the same 6 elements for 6 combination.
+36 36 36 27 7 2 the same 6 elements for 4 combination.
+36 36 36 27 5 4 the same 6 elements for 2 combination.
+36 36 36 26 9 1 the same 6 elements for 8 combination.
+36 36 36 23 12 1 the same 6 elements for 4 combination.
+36 36 36 23 9 4 the same 6 elements for 1 combination.
+36 36 36 22 12 2 the same 6 elements for 4 combination.
+36 36 36 22 9 5 the same 6 elements for 1 combination.
+36 36 36 20 12 4 the same 6 elements for 6 combination.
+36 36 36 20 9 7 the same 6 elements for 3 combination.
+36 36 36 18 17 1 the same 6 elements for 4 combination.
+36 36 36 18 16 2 the same 6 elements for 2 combination.
+36 36 36 17 17 2 the same 6 elements for 2 combination.
+36 36 36 17 12 7 the same 6 elements for 4 combination.
+35 35 34 1 33 2 the same 6 elements for 48 combination.
+35 35 33 33 2 2 the same 6 elements for 6 combination.
+35 35 34 1 31 4 the same 6 elements for 12 combination.
+35 35 33 2 31 4 the same 6 elements for 24 combination.
+35 35 34 1 28 7 the same 6 elements for 36 combination.
+35 35 33 2 28 7 the same 6 elements for 72 combination.
+35 35 31 4 28 7 the same 6 elements for 18 combination.
+35 35 34 1 26 9 the same 6 elements for 48 combination.
+35 35 33 2 26 9 the same 6 elements for 96 combination.
+35 35 31 4 26 9 the same 6 elements for 24 combination.
+35 35 28 7 26 9 the same 6 elements for 72 combination.
+35 35 34 1 23 12 the same 6 elements for 24 combination.
+35 35 33 2 23 12 the same 6 elements for 48 combination.
+35 35 31 4 23 12 the same 6 elements for 12 combination.
+35 35 28 7 23 12 the same 6 elements for 36 combination.
+35 35 26 9 23 12 the same 6 elements for 48 combination.
+35 35 34 1 18 17 the same 6 elements for 24 combination.
+35 35 33 2 18 17 the same 6 elements for 48 combination.
+35 35 31 4 18 17 the same 6 elements for 12 combination.
+35 35 28 7 18 17 the same 6 elements for 36 combination.
+35 35 26 9 18 17 the same 6 elements for 48 combination.
+35 35 23 12 18 17 the same 6 elements for 24 combination.
+35 35 35 33 1 1 the same 6 elements for 8 combination.
+35 35 35 32 2 1 the same 6 elements for 16 combination.
+35 35 35 31 2 2 the same 6 elements for 4 combination.
+35 35 35 28 5 2 the same 6 elements for 24 combination.
+35 35 35 27 7 1 the same 6 elements for 16 combination.
+35 35 35 26 7 2 the same 6 elements for 32 combination.
+35 35 35 26 5 4 the same 6 elements for 16 combination.
+35 35 35 23 7 5 the same 6 elements for 4 combination.
+35 35 35 22 12 1 the same 6 elements for 16 combination.
+35 35 35 22 9 4 the same 6 elements for 4 combination.
+35 35 35 18 16 1 the same 6 elements for 8 combination.
+35 35 35 18 12 5 the same 6 elements for 8 combination.
+35 35 35 17 17 1 the same 6 elements for 8 combination.
+35 35 35 17 16 2 the same 6 elements for 16 combination.
+35 35 35 16 12 7 the same 6 elements for 8 combination.
+33 33 32 1 31 2 the same 6 elements for 4 combination.
+33 33 32 1 28 5 the same 6 elements for 6 combination.
+33 33 31 2 28 5 the same 6 elements for 6 combination.
+33 33 32 1 26 7 the same 6 elements for 8 combination.
+33 33 31 2 26 7 the same 6 elements for 8 combination.
+33 33 28 5 26 7 the same 6 elements for 12 combination.
+33 33 32 1 17 16 the same 6 elements for 4 combination.
+33 33 31 2 17 16 the same 6 elements for 4 combination.
+33 33 28 5 17 16 the same 6 elements for 6 combination.
+33 33 26 7 17 16 the same 6 elements for 8 combination.
+28 28 27 27 1 1 the same 6 elements for 3 combination.
+28 28 27 1 26 2 the same 6 elements for 96 combination.
+28 28 26 26 2 2 the same 6 elements for 18 combination.
+28 28 27 1 23 5 the same 6 elements for 12 combination.
+28 28 26 2 23 5 the same 6 elements for 24 combination.
+28 28 27 1 16 12 the same 6 elements for 24 combination.
+28 28 26 2 16 12 the same 6 elements for 48 combination.
+28 28 23 5 16 12 the same 6 elements for 6 combination.
+28 28 28 26 1 1 the same 6 elements for 4 combination.
+28 28 28 23 4 1 the same 6 elements for 2 combination.
+28 28 28 22 5 1 the same 6 elements for 2 combination.
+28 28 28 22 4 2 the same 6 elements for 2 combination.
+28 28 28 20 7 1 the same 6 elements for 6 combination.
+28 28 28 18 9 1 the same 6 elements for 2 combination.
+28 28 28 17 9 2 the same 6 elements for 4 combination.
+28 28 28 17 7 4 the same 6 elements for 2 combination.
+28 28 28 16 7 5 the same 6 elements for 1 combination.
+28 28 28 12 12 4 the same 6 elements for 1 combination.
+28 28 28 12 9 7 the same 6 elements for 2 combination.
+27 27 26 26 1 1 the same 6 elements for 6 combination.
+27 27 26 1 23 4 the same 6 elements for 8 combination.
+27 27 26 1 22 5 the same 6 elements for 8 combination.
+27 27 23 4 22 5 the same 6 elements for 1 combination.
+27 27 26 1 20 7 the same 6 elements for 24 combination.
+27 27 23 4 20 7 the same 6 elements for 3 combination.
+27 27 22 5 20 7 the same 6 elements for 3 combination.
+27 27 26 1 18 9 the same 6 elements for 8 combination.
+27 27 23 4 18 9 the same 6 elements for 1 combination.
+27 27 22 5 18 9 the same 6 elements for 1 combination.
+27 27 20 7 18 9 the same 6 elements for 3 combination.
+26 26 22 4 17 9 the same 6 elements for 12 combination.
+26 26 26 23 2 1 the same 6 elements for 16 combination.
+26 26 26 22 2 2 the same 6 elements for 4 combination.
+26 26 26 20 5 1 the same 6 elements for 24 combination.
+26 26 26 20 4 2 the same 6 elements for 24 combination.
+26 26 26 18 7 1 the same 6 elements for 8 combination.
+26 26 26 17 7 2 the same 6 elements for 16 combination.
+26 26 26 17 5 4 the same 6 elements for 8 combination.
+26 26 26 16 9 1 the same 6 elements for 8 combination.
+26 26 26 12 12 2 the same 6 elements for 8 combination.
+26 26 26 12 9 5 the same 6 elements for 8 combination.
+20 20 18 2 16 4 the same 6 elements for 6 combination.
+20 20 20 18 1 1 the same 6 elements for 1 combination.
+20 20 20 17 2 1 the same 6 elements for 8 combination.
+20 20 20 16 2 2 the same 6 elements for 1 combination.
+20 20 20 12 7 1 the same 6 elements for 4 combination.
+20 20 20 9 7 4 the same 6 elements for 1 combination.
+17 17 16 1 12 5 the same 6 elements for 4 combination.
+Squares number: 6634
+===========================================
+Algorithm time: 0.00125875

@@ -232,7 +232,7 @@ double algorithmsTimeMeasure(Algorithm &algorithm, string fileName, int p)
 {
     int squaresNumber;
     ofstream myFile;
-    myFile.open(fileName + to_string(p) + ".txt");
+    myFile.open(fileName + "/" + fileName + to_string(p) + ".txt");
 
     std::chrono::time_point<std::chrono::system_clock> start = std::chrono::system_clock::now();
     if(fileName == "naiveAlgorithm")
@@ -260,32 +260,37 @@ void generateTimeMeasureResults(Sticks &sticks)
     int stickNumberForIteration[measureNumber];
     double naiveAlgTimes[measureNumber][5];
     double myHeuristicAlgTimes[measureNumber][5];
-
-    for(int i = 0 ; i < measureNumber; i++)
+    for(int i = 0; i < measureNumber; i++)
     {
         system("clear");
-        cout << "Please enter the number of sticks: " << endl;
+        cout << "Please enter " << measureNumber - i << " numbers of sticks: " << endl;
         stickNumberForIteration[i] = getStickNumber();
-        sticks.setStickNumber(stickNumberForIteration[i] );
+    }
 
-        Algorithm algorithm(sticks);
+    system("clear");
+    cout << "Please wait for a while." << endl;
+    for(int i = 0 ; i < measureNumber; i++)
+    {
+        sticks.setStickNumber(stickNumberForIteration[i] );
         string naiveAlgorithmFile = "naiveAlgorithm";
         string myHeuristicAlgorithmFile = "myHeuristicAlgorithm";
 
         for(int j = 0; j < 5; j++)
         {
+            Algorithm algorithm(sticks);
             naiveAlgTimes[i][j] = algorithmsTimeMeasure(algorithm, naiveAlgorithmFile, i);
             myHeuristicAlgTimes[i][j] = algorithmsTimeMeasure(algorithm, myHeuristicAlgorithmFile, i);
+            sticks.generateStickTable();
         }
     }
 
     ofstream naiveFile;
-    naiveFile.open("NaiveAlgorithmTimeMeasures.csv");
+    naiveFile.open("naiveAlgorithm/NaiveAlgorithmTimeMeasures.csv");
     saveTimeMeasureData(naiveFile, stickNumberForIteration, naiveAlgTimes, measureNumber);
     naiveFile.close();
 
     ofstream myHeuristicFile;
-    myHeuristicFile.open("MyHeuristicAlgorithmTimeMeasures.csv");
+    myHeuristicFile.open("myHeuristicAlgorithm/MyHeuristicAlgorithmTimeMeasures.csv");
     saveTimeMeasureData(myHeuristicFile, stickNumberForIteration, myHeuristicAlgTimes, measureNumber);
     myHeuristicFile.close();
 
@@ -293,7 +298,7 @@ void generateTimeMeasureResults(Sticks &sticks)
 
 void saveTimeMeasureData(ofstream &myFile, int stickNumberTab[], double algorithmTimes[][5], int length)
 {
-    myFile << "Liczba S,\t\tCzasy dla poszczególnych wywołań programu,\t\tŚrednia wszystkich wykonań\n";
+    myFile << "Liczba S,\t\tCzasy dla poszczegolnych wywolan programu,\t\tSrednia wszystkich wykonan\n";
     for(int i = 0 ; i < length; i++)
     {
         myFile << stickNumberTab[i] << ",";
