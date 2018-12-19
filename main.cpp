@@ -10,14 +10,17 @@ index: 283706
 #include <fstream>
 #include <fstream>
 #include <iomanip>
+#include <thread>
 #include "Sticks.h"
 #include "Algorithm.h"
 
 using namespace std;
 
 void UI();
+void sleep(int seconds);
 int  getNumber();
 int  getStickNumber();
+void pressKeyToGoBack();
 void optionScreen(Sticks &sticks);
 void changeSticksNumber(Sticks &sticks);
 void generateStickTableElements(Sticks &sticks);
@@ -28,6 +31,7 @@ void algorithmsTimeMeasure(Algorithm &algorithm, string fileName);
 double algorithmsTimeMeasure(Algorithm &algorithm, string fileName, int p);
 void generateTimeMeasureResults(Sticks &sticks);
 void saveTimeMeasureData(ofstream &myFile, int stickNumberTab[], double algorithmTimes[][5], int length);
+
 int main()
 {
     UI();
@@ -40,8 +44,7 @@ void UI()
 
     int stickNumber = getStickNumber();
 
-    //Poczatek wypelniania tablicy S elementowej
-    Sticks sticks(stickNumber);
+    Sticks sticks(stickNumber); //Poczatek wypelniania tablicy S elementowej
     sticks.generateStickTable();
 
     int decision;
@@ -54,13 +57,18 @@ void UI()
 
         if(cin.fail() )
         {
+            cout << "Write a integer number out of 7" << endl;
+            sleep(2);
             cin.clear();
             cin.ignore(150, '\n');
             continue;
         }
-
-        if(decision < 1 || decision > 7)
+        else if(decision < 1 || decision > 7)
+        {
+            cout << "Write correct integer number." << endl;
+            sleep(2);
             continue;
+        }
 
         switch(decision)
         {
@@ -88,14 +96,21 @@ void UI()
     }
 }
 
+void sleep(int seconds)
+{
+    std::this_thread::sleep_for(std::chrono::seconds(seconds));
+}
+
 int getNumber()
 {
     int number;
     do
     {
         cin >> number;
-        if(cin.fail() )
+        if(cin.fail() || number < 1)
         {
+            system("clear");
+            cout << "Write integer number greater than or equal to 1:" << endl;
             cin.clear();
             cin.ignore(150, '\n');
         }
@@ -112,13 +127,28 @@ int getStickNumber()
         cin >> stickNumber;
         if(cin.fail() )
         {
+            system("clear");
+            cout << "Write integer number greater than or equal to 6:" << endl;
             cin.clear();
             cin.ignore(150, '\n');
+        }
+        else if(stickNumber < 6)
+        {
+            system("clear");
+            cout << "Write correct integer number greater than or equal to 6:" << endl;
         }
     }
     while ( stickNumber < 6 );
     return stickNumber;
 }
+
+void pressKeyToGoBack()
+{
+    string goBack;
+    cout << "\nPress key to go back to main panel."<<endl;
+    cin >> goBack;
+}
+
 void optionScreen (Sticks &sticks)
 {
     cout << "Current S value: " << sticks.getStickNumber() << endl;
@@ -143,17 +173,17 @@ void changeSticksNumber(Sticks &sticks)
 void generateStickTableElements(Sticks &sticks)
 {
     sticks.generateStickTable();
+    cout << "Stick table was generated with integer numbers." << endl;
+    sleep(2);
 }
 
 void showStickTableElements(Sticks &sticks)
 {
     system("clear");
     for( int i = 0; i < sticks.getStickNumber(); i++)
-        cout << "[" << i << "]:" << *(sticks.getStickTable() + i) <<endl;
+        cout << "[" << i << "]: " << *(sticks.getStickTable() + i) <<endl;
 
-    string goBack;
-    cout << "\nPress key to go back to main panel."<<endl;
-    cin >> goBack;
+    pressKeyToGoBack();
 }
 
 void generateOwnStickTableElements(Sticks &sticks)
@@ -162,13 +192,21 @@ void generateOwnStickTableElements(Sticks &sticks)
     for( int i = 0; i < sticks.getStickNumber(); i++)
     {
         system("clear");
+        cout << "All elements from new table: " << endl;
+        for( int j = 0; j < i; j++)
+        {
+            cout << "[" << j << "]: " << *(sticks.getStickTable() + j) << endl;
+        }
         cout << "Write: " << sticks.getStickNumber() - i << " new elements." << endl;
         cout << "Element can not be more than: " << sticks.getStickNumber() << endl;
+
         do
         {
             cin >> newElem;
-            if(cin.fail() )
+            if(cin.fail() || newElem < 1 || newElem > sticks.getStickNumber() )
             {
+                cout << "Write a integer number less than or equal to "<< sticks.getStickNumber() << endl;
+                sleep(2);
                 cin.clear();
                 cin.ignore(150, '\n');
             }
@@ -190,9 +228,7 @@ void viewAlgorithmsTimeMeasure(Sticks &sticks)
     string myHeuristicAlgorithmFile = "myHeuristicAlgorithm";
     algorithmsTimeMeasure(algorithm, myHeuristicAlgorithmFile);
 
-    string goBack;
-    cout << "\nPress key to go back to main panel." << endl;
-    cin >> goBack;
+    pressKeyToGoBack();
 }
 
 void algorithmsTimeMeasure(Algorithm &algorithm, string fileName)
@@ -263,6 +299,11 @@ void generateTimeMeasureResults(Sticks &sticks)
     for(int i = 0; i < measureNumber; i++)
     {
         system("clear");
+        cout << "All numbers entered for measurements:" << endl;
+        for(int j = 0; j < i; j++)
+        {
+            cout << "[" << j << "]: " << stickNumberForIteration[j] << endl;
+        }
         cout << "Please enter " << measureNumber - i << " numbers of sticks: " << endl;
         stickNumberForIteration[i] = getStickNumber();
     }
@@ -294,6 +335,8 @@ void generateTimeMeasureResults(Sticks &sticks)
     saveTimeMeasureData(myHeuristicFile, stickNumberForIteration, myHeuristicAlgTimes, measureNumber);
     myHeuristicFile.close();
 
+    cout << "Success." << endl;
+    pressKeyToGoBack();
 }
 
 void saveTimeMeasureData(ofstream &myFile, int stickNumberTab[], double algorithmTimes[][5], int length)
