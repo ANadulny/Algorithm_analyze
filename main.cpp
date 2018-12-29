@@ -248,9 +248,9 @@ void algorithmsTimeMeasure(Algorithm &algorithm, string fileName)
     std::chrono::time_point<std::chrono::system_clock> start = std::chrono::system_clock::now();
 
     if(fileName == "naiveAlgorithm")
-        squaresNumber = algorithm.AlgorithmNaive( myFile );
+        squaresNumber = algorithm.algorithmNaive( myFile );
     else
-        squaresNumber = algorithm.AlgorithmMyHeuristic( myFile );
+        squaresNumber = algorithm.algorithmMyHeuristic( myFile );
 
     cout << squaresNumber << ": Squares number" << endl;
     std::chrono::time_point<std::chrono::system_clock> end = std::chrono::system_clock::now();
@@ -272,9 +272,9 @@ double algorithmsTimeMeasure(Algorithm &algorithm, string fileName, int p)
 
     std::chrono::time_point<std::chrono::system_clock> start = std::chrono::system_clock::now();
     if(fileName == "naiveAlgorithm")
-        squaresNumber = algorithm.AlgorithmNaive( myFile );
+        squaresNumber = algorithm.algorithmNaive( myFile );
     else
-        squaresNumber = algorithm.AlgorithmMyHeuristic( myFile );
+        squaresNumber = algorithm.algorithmMyHeuristic( myFile );
     std::chrono::time_point<std::chrono::system_clock> end = std::chrono::system_clock::now();
     std::chrono::duration<double> elapsed_seconds = end - start;
 

@@ -19,13 +19,13 @@ class Algorithm
 public:
     Algorithm( Sticks& stick);
     ~Algorithm();
-    int AlgorithmNaive( std::ofstream &myFile);
-    int AlgorithmMyHeuristic( std::ofstream &myFile);
+    int algorithmNaive( std::ofstream &myFile);
+    int algorithmMyHeuristic( std::ofstream &myFile);
 
 private:
-    void quicksort(int tablica[], int p, int r);
-    int searchingTwoSidesOfSquare ( int position, int countedElements, std::ofstream &myFile);
-    int searchingThreeSticks ( int position, int countedElements, std::ofstream &myFile);
+    void quicksort(int table[], int p, int r);
+    int searchingTwoSidesOfSquare ( int position, int counterRepeatingNumber, std::ofstream &myFile);
+    int searchingThreeSticks ( int position, int counterRepeatingNumber, std::ofstream &myFile);
 };
 
 
@@ -41,7 +41,7 @@ Algorithm::~Algorithm()
     algorithmTable = nullptr;
 }
 
-int Algorithm::AlgorithmNaive( std::ofstream &myFile)
+int Algorithm::algorithmNaive( std::ofstream &myFile)
 {
     for( int i = 0; i < length; i++ )
         myFile << "[" << i << "]: " << algorithmTable[i] << "\n";
@@ -53,80 +53,80 @@ int Algorithm::AlgorithmNaive( std::ofstream &myFile)
         return 0;
     }
 
-    int counter = 0;
-    int tab[6];
+    int squaresCounter = 0;
+    int table[6];
 
     for( int i1 = 0; i1 < length-5; i1++ )
     {
-        tab[0] = algorithmTable[i1];
-        int max_elem;
+        table[0] = algorithmTable[i1];
         for( int i2 = 1 + i1; i2 < length-4; i2++ )
         {
-            tab[1] = algorithmTable[i2];
+            table[1] = algorithmTable[i2];
             for( int i3 = 1 + i2; i3 < length-3; i3++ )
             {
-                tab[2] = algorithmTable[i3];
+                table[2] = algorithmTable[i3];
                 for( int i4 = 1 + i3; i4 < length-2; i4++ )
                 {
-                    tab[3] = algorithmTable[i4];
+                    table[3] = algorithmTable[i4];
                     for( int i5 = 1 + i4; i5 < length-1; i5++ )
                     {
-                        tab[4] = algorithmTable[i5];
+                        table[4] = algorithmTable[i5];
                         for( int i6 = 1 + i5; i6 < length; i6++ )
                         {
-                            tab[5] = algorithmTable[i6];
-                            int counting = 1;
+                            table[5] = algorithmTable[i6];
+                            int counterLargestNumber = 1;
+                            int maxElement;
                             int sum = 0;
-                            //searching the max number
-                            for( int i = 0; i < 6; i++ )
+
+                            for( int i = 0; i < 6; i++ ) //searching the max number
                             {
-                                sum += tab[i];
+                                sum += table[i];
 
                                 if( i == 0)
                                 {
-                                    max_elem = tab[i];
+                                    maxElement = table[i];
                                     continue;
                                 }
-                                if( tab[i] > max_elem )
+                                if( table[i] > maxElement )
                                 {
-                                    max_elem = tab[i];
-                                    counting = 1;
+                                    maxElement = table[i];
+                                    counterLargestNumber = 1;
                                 }
-                                else if( tab[i] == max_elem )
-                                    counting++;
+                                else if( table[i] == maxElement )
+                                    counterLargestNumber++;
                             }
-                            // the largest 3 sticks have the same number
-                            if( counting == 3 && sum == (max_elem * 4) )
+
+                            if( counterLargestNumber == 3 && sum == (maxElement * 4) )
                             {
-                                counter++;
+                                squaresCounter++;
 
                                 for(int i = 0; i < 6; i++)
-                                    myFile << tab[i] << " ";
+                                    myFile << table[i] << " ";
 
                                 myFile << "\n";
                             }
-                            // the largest 2 sticks have the same number
-                            else if( counting == 2 && sum == (max_elem * 4) )
+
+                            else if( counterLargestNumber == 2 && sum == (maxElement * 4) )
                             {
                                 int j = 0;
                                 for( int i = 0; i < 6; i++ )
                                 {
-                                    if( tab[i] < max_elem )
+                                    if( table[i] < maxElement )
                                     {
                                         j = i;
                                         break;
                                     }
                                 }
 
-                                int pom = tab[j++];
+                                int pom = table[j++];
                                 for( ; j < 6; j++ )
                                 {
-                                    if( tab[j] < max_elem && tab[j] + pom == max_elem )
+                                    if( table[j] < maxElement && table[j] + pom == maxElement )
                                     {
-                                        counter++;
+                                        squaresCounter++;
 
                                         for( int i = 0; i < 6; i++ )
-                                            myFile << tab[i] << " ";
+                                            myFile << table[i] << " ";
 
                                         myFile << "\n";
                                         break;
@@ -139,10 +139,10 @@ int Algorithm::AlgorithmNaive( std::ofstream &myFile)
             }
         }
     }
-    return counter;
+    return squaresCounter;
 }
 
-int Algorithm::AlgorithmMyHeuristic( std::ofstream &myFile )
+int Algorithm::algorithmMyHeuristic( std::ofstream &myFile )
 {
     quicksort( algorithmTable, 0, length - 1 );
 
@@ -150,47 +150,50 @@ int Algorithm::AlgorithmMyHeuristic( std::ofstream &myFile )
         myFile << "[" << i << "]: " << algorithmTable[i] << " \n";
 
     myFile << "===========================================\n";
-
-    int sum = 0;
-    int first = algorithmTable[0];
-    int counter = 1;
-
-    for( int i = 1; i < length - 3; i++ )   // bo może być warian ze 3 pierwsze liczby tej samej dlugosci
+    if( length < 6 )
     {
-        if( algorithmTable[i] == first )
+        myFile << "Length is less than 6!\n";
+        return 0;
+    }
+
+    int squaresCounter = 0;
+    int counterRepeatingNumber = 1;
+
+    for( int i = 1; i < length - 3; i++ )   // to build square: the last 3 numbers must be lower than algorithmTable[length - 4]
+    {
+        if( algorithmTable[i] == algorithmTable[i-1] )
         {
-            counter++;
+            counterRepeatingNumber++;
             continue;
         }
-        else if( algorithmTable[i] != first && counter > 1 )
+        else if( algorithmTable[i] != algorithmTable[i-1] && counterRepeatingNumber > 1 )
         {
-            sum += searchingTwoSidesOfSquare( i, counter, myFile );
-            sum += searchingThreeSticks( i, counter, myFile );
+            squaresCounter += searchingTwoSidesOfSquare( i, counterRepeatingNumber, myFile );
+            squaresCounter += searchingThreeSticks( i, counterRepeatingNumber, myFile );
         }
 
-        counter = 1;
-        first = algorithmTable[i];
+        counterRepeatingNumber = 1;
     }
-    return sum;
+    return squaresCounter;
 }
 
-int partition( int tablica[], int p, int r )
+int partition( int table[], int p, int r )
 {
-    int x = tablica[p];
+    int x = table[p];
     int i = p, j = r, w;
     while( true )
     {
-        while( tablica[j] < x )
+        while( table[j] < x )
             j--;
 
-        while( tablica[i] > x )
+        while( table[i] > x )
             i++;
 
         if( i < j )
         {
-            w = tablica[i];
-            tablica[i] = tablica[j];
-            tablica[j] = w;
+            w = table[i];
+            table[i] = table[j];
+            table[j] = w;
             i++;
             j--;
         }
@@ -199,14 +202,14 @@ int partition( int tablica[], int p, int r )
     }
 }
 
-void Algorithm::quicksort( int tablica[], int p, int r )
+void Algorithm::quicksort( int table[], int p, int r )
 {
     int q;
     if( p < r )
     {
-        q = partition( tablica, p, r );
-        quicksort( tablica, p, q );
-        quicksort( tablica, q + 1, r );
+        q = partition( table, p, r );
+        quicksort( table, p, q );
+        quicksort( table, q + 1, r );
     }
 }
 
@@ -218,17 +221,15 @@ int newton( int n, int k )
     return number;
 }
 
-//tmp - ile wariantow danego typu pojawilo sie
-//tmpi - ile takich samych liczb z gory pojawilo sie
-//tmpj - ile takich samych liczb z dolu pojawilo sie
-//zwraca liczbe wariantow gdzie za pomoca 2 liczb mozna otrzymac sume algorithmTable[position-1]
-int Algorithm::searchingTwoSidesOfSquare ( int position, int countedElements, std::ofstream &myFile )
+//tmpi - counter of repetition from the left
+//tmpj - counter of repetition from the right
+int Algorithm::searchingTwoSidesOfSquare ( int position, int counterRepeatingNumber, std::ofstream &myFile )
 {
-    int counter = 0;
-    int countedElementsCombination = newton( countedElements, 2 );
+    int squaresCounter = 0;
+    int countedElementsCombination = newton( counterRepeatingNumber, 2 );
     combination.clear(); // [n, a, b]
     int i = position, j = length - 1;
-    int tmpi, tmpj, tmp;
+    int tmpi, tmpj, tmpNumberOfCombination;
 
     while( algorithmTable[i] >= (int)(algorithmTable[position-1] / 2) && algorithmTable[j] <= (int)(algorithmTable[position-1] / 2) )
     {
@@ -258,23 +259,23 @@ int Algorithm::searchingTwoSidesOfSquare ( int position, int countedElements, st
                 tmpj++;
                 j--;
             }
-            tmp = tmpj * tmpi;
+            tmpNumberOfCombination = tmpj * tmpi;
         }
 
         else
-            tmp = tmpi * (tmpi - 1) / 2;
+            tmpNumberOfCombination = tmpi * (tmpi - 1) / 2;
 
         int n, a, b;
         int counterTmp;
-        for( unsigned int it = 0; it < combination.size(); )   // wariant gdzie 1 i 2 liczba to max, 3 i 4 z wektora wzieta i 5 oraz 6 wyliczona w tej iteracji
+        for( unsigned int it = 0; it < combination.size(); )
         {
             n = combination[it++];
             a = combination[it++];
             b = combination[it++];
 
-            counterTmp = countedElementsCombination * n * tmp ;
-            counter += counterTmp;
-            if( counterTmp > 0 )
+            counterTmp = countedElementsCombination * n * tmpNumberOfCombination ;
+            squaresCounter += counterTmp;
+            //if( counterTmp > 0 )
                 myFile << algorithmTable[position-1] << " " << algorithmTable[position-1] << " " << a << " " << b << " " << algorithmTable[i]
                        << " " << algorithmTable[j] << " the same 6 elements for " << counterTmp << " combination.\n";
         }
@@ -284,25 +285,25 @@ int Algorithm::searchingTwoSidesOfSquare ( int position, int countedElements, st
         else
             counterTmp = countedElementsCombination * newton(tmpi, 2) * newton(tmpj, 2);
 
-        counter += counterTmp;
+        squaresCounter += counterTmp;
         if( counterTmp > 0 )
             myFile << algorithmTable[position-1] << " " << algorithmTable[position-1] << " " << algorithmTable[i] << " " << algorithmTable[i]
                    << " " << algorithmTable[j] << " " << algorithmTable[j] << " the same 6 elements for " << counterTmp << " combination.\n";
 
-        combination.push_back(tmp);
+        combination.push_back(tmpNumberOfCombination);
         combination.push_back(algorithmTable[i++]);
         combination.push_back(algorithmTable[j--]);
     }
-    return counter;
+    return squaresCounter;
 }
 
-int Algorithm::searchingThreeSticks ( int position, int countedElements, std::ofstream &myFile )
+int Algorithm::searchingThreeSticks ( int position, int counterRepeatingNumber, std::ofstream &myFile )
 {
-    if( countedElements < 3 )
+    if( counterRepeatingNumber < 3 )
         return 0;
 
-    int counter = 0;
-    int countedElementsCombination = newton( countedElements, 3 );
+    int squaresCounter = 0;
+    int countedElementsCombination = newton( counterRepeatingNumber, 3 );
     int tmpi, tmpj, tmpk;
     int counterTmp;
 
@@ -361,13 +362,12 @@ int Algorithm::searchingThreeSticks ( int position, int countedElements, std::of
                     continue;
                 }
 
-                // ewentualnie dac if decydujacego czy counterTmp > 0
                 myFile << algorithmTable[position-1] << " " << algorithmTable[position-1] << " " << algorithmTable[position-1] << " " << algorithmTable[i] << " ";
                 myFile << algorithmTable[k++] << " " << algorithmTable[j--] << " the same 6 elements for " << counterTmp << " combination.\n";
-                counter += counterTmp;
+                squaresCounter += counterTmp;
             }
         }
     }
-    return counter;
+    return squaresCounter;
 }
 #endif // ALGORITHM_H_INCLUDED

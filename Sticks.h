@@ -8,7 +8,7 @@ index: 283706
 class Sticks
 {
 
-    int stickNumber; //unsigned
+    int stickNumber;
     int *stickTable;
 
 public:
